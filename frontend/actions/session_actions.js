@@ -19,11 +19,19 @@ export const receiveErrors = errors => ({
 });
 
 // thunk action creator
-export const createNewUser = formUser => dispatch => createUser(formUser)
-  .then(user => dispatch(receiveCurrentUser(user)));
+export const createNewUser = formUser => dispatch => (
+  createUser(formUser)
+  .then(user => dispatch(receiveCurrentUser(user)))
+  , err => dispatch(receiveErrors(err.responseJSON))
+);
 
-export const login = formUser => dispatch => createSession(formUser)
-  .then(user => dispatch(receiveCurrentUser(user)));
+export const login = formUser => dispatch => (
+  createSession(formUser)
+  .then(user => dispatch(receiveCurrentUser(user)))
+  , err => dispatch(receiveErrors(err.responseJSON))
+);
 
-export const logout = () => dispatch => deleteSession()
-  .then(() => dispatch(logoutCurrentUser()));
+export const logout = () => dispatch => (
+  deleteSession()
+  .then(() => dispatch(logoutCurrentUser()))
+);

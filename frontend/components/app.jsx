@@ -6,6 +6,7 @@ import SigninContainer from './session/signin_container';
 
 export default () => (
   <div>
+    <h1>Welcome to Relax</h1>
     <AuthRoute path='/signin' component={SigninContainer} />
     <AuthRoute path="/createnew" component={SignupContainer} />
   </div>
