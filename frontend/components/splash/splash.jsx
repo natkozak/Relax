@@ -9,7 +9,7 @@ class Splash extends React.Component {
   render() {
     return (
       <div className='splash-div'>
-        <h1 className='splash-header'>Relax makes it <b className='splash-bold'>downright pleasant</b> to work together</h1>
+        <h1 className='splash-header-text'>Relax makes it <b className='splash-bold'>downright pleasant</b> to work together</h1>
         <Link to='/createnew' className='splash-button'>try for free</Link>
       </div>
     );
