@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+
+
+/* SPLASH PAGE */
+ body {
+   background-color:#611f69;
+   font-family: Helvetica;
+ }
+
+.splash-header{
+  color: white;
+}
+
+.splash-button{
+    background-color: #fff;
+    color: #611f69;
+    fill: #611f69;
+}
+
+.splash-bold {
+  color: darkgoldenrod;
+}
+
+/* SIGN IN */
+
