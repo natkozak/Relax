@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const NavBar = ({ currentUser, logout }) => {
+const SearchBar = ({ currentUser, logout }) => {
   const display = currentUser ? (
     <div>
       <p>Hello, {currentUser.fullName}</p>
@@ -23,4 +23,4 @@ const NavBar = ({ currentUser, logout }) => {
   );
 };
 
-export default NavBar;
+export default SearchBar;
