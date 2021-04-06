@@ -11,10 +11,13 @@ import SigninContainer from './session/signin_container';
 
 const App = () => (
   <div>
+    <Switch>
       <AuthRoute exact path='/' component={SplashContainer} />
       <AuthRoute exact path='/signin' component={SigninContainer} />
       <AuthRoute exact path="/createnew" component={SignupContainer} />
       <ProtectedRoute path="/client" component={ClientContainer} />
+      <Redirect to='/' />
+    </Switch>
   </div>
 );
 
