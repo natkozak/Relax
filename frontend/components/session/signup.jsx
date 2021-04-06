@@ -41,8 +41,10 @@ class Signup extends React.Component {
       <div className="signup-form">
         <h1>Enter an email and password</h1>
         <h3>We suggest using <b>the email address you use at work.</b></h3>
-        <div>{this.renderErrors()}</div>
+        
+        <div>Already using slack? {this.props.signinLink}</div>
         <form onSubmit={this.handleSubmit}>
+          {this.renderErrors()}
           <label>Email:
             <input type="text" value={this.state.email} onChange={this.handleInput('email')} />
           </label>

@@ -22,13 +22,13 @@ export const receiveErrors = errors => ({
 export const createNewUser = formUser => dispatch => (
   createUser(formUser)
   .then(user => dispatch(receiveCurrentUser(user)))
-  , err => dispatch(receiveErrors(err.responseJSON))
+  .fail(err => dispatch(receiveErrors(err.responseJSON)))
 );
 
 export const login = formUser => dispatch => (
   createSession(formUser)
   .then(user => dispatch(receiveCurrentUser(user)))
-  , err => dispatch(receiveErrors(err.responseJSON))
+  .fail(err => dispatch(receiveErrors(err.responseJSON)))
 );
 
 export const logout = () => dispatch => (
