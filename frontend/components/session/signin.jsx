@@ -20,7 +20,8 @@ class Signin extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.login(this.state);
+    const user = Object.assign({}, this.state);
+    this.props.login(user);
   }
 
   renderErrors() {
@@ -33,6 +34,10 @@ class Signin extends React.Component {
         ))}
       </ul>
     );
+  }
+
+  componentDidMount() {
+    this.props.clearErrors();
   }
 
 

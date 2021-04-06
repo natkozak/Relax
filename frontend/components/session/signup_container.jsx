@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { createNewUser } from '../../actions/session_actions';
+import { createNewUser, clearErrors } from '../../actions/session_actions';
 import Signup from './signup';
 
 const mapSTP = ({ errors }) => {
@@ -13,6 +13,7 @@ const mapSTP = ({ errors }) => {
 
 const mapDTP = dispatch => ({
   createNewUser: formUser => dispatch(createNewUser(formUser)),
+  clearErrors: () => dispatch(clearErrors())
 });
 
 export default connect(mapSTP, mapDTP)(Signup);

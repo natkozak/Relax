@@ -20,7 +20,8 @@ class Signup extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createNewUser(this.state);
+    const user = Object.assign({}, this.state);
+    this.props.createNewUser(user);
   }
 
   renderErrors() {
@@ -33,6 +34,10 @@ class Signup extends React.Component {
         ))}
       </ul>
     );
+  }
+
+  componentDidMount() {
+    this.props.clearErrors();
   }
 
 
