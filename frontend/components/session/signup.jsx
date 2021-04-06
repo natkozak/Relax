@@ -42,7 +42,7 @@ class Signup extends React.Component {
         <h1>Enter an email and password</h1>
         <h3>We suggest using <b>the email address you use at work.</b></h3>
         
-        <div>Already using slack? {this.props.signinLink}</div>
+        <div>Already using relax? {this.props.signinLink}</div>
         <form onSubmit={this.handleSubmit}>
           {this.renderErrors()}
           <label>Email:

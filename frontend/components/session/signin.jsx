@@ -42,7 +42,7 @@ class Signin extends React.Component {
         <h1>Sign in to Relax</h1>
         <h3>We suggest using <b>the email address you use at work.</b></h3>
         
-        <div>New to slack? {this.props.signupLink}</div>
+        <div>New to relax? {this.props.signupLink}</div>
         <form onSubmit={this.handleSubmit}>
           {this.renderErrors()}
           <label>Email:
