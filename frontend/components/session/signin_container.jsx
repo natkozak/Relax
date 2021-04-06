@@ -13,6 +13,7 @@ const mapSTP = ({ errors }) => {
 
 const mapDTP = dispatch => ({
   login: formUser => dispatch(login(formUser)),
+  demoUser: (user) => dispatch(login(user)),
   clearErrors: () => dispatch(clearErrors())
 });
 
