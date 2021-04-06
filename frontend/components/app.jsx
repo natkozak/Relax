@@ -1,17 +1,22 @@
 import React from 'react';
-import NavBarContainer from './nav_bar/nav_bar_container';
+import { Redirect, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../utils/route_utils';
+
+import NavBarContainer from './nav_bar/nav_bar_container';
 import SignupContainer from './session/signup_container';
 import SigninContainer from './session/signin_container';
-import { Route } from 'react-router-dom';
+
 
 
 
 const App = () => (
   <div>
-    <ProtectedRoute path="/" component={NavBarContainer} />
-    <AuthRoute path='/signin' component={SigninContainer} />
-    <AuthRoute path="/createnew" component={SignupContainer} />
+    <Switch>
+      <AuthRoute exact path='/signin' component={SigninContainer} />
+      <AuthRoute exact path="/createnew" component={SignupContainer} />
+      <ProtectedRoute path="/" component={NavBarContainer} />
+      <Redirect to="/" />
+    </Switch>
   </div>
 );
 
