@@ -11,7 +11,7 @@
 #  updated_at      :datetime         not null
 #
 class User < ApplicationRecord
-  attr_reader :password
+  attr_reader :password # why is it that when I try to add full_name as a reader, I can no longer display the user name in the search bar?
 
   validates :email, :password_digest, :session_token, :full_name, presence: true
   validates :email, :session_token, uniqueness: true

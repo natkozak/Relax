@@ -25,6 +25,6 @@ class Message < ApplicationRecord
   end
 
   def attach_author_ownership #experimental
-    self.author_id = current_user.id
+    self.author_id = self.author.id
   end
 end
