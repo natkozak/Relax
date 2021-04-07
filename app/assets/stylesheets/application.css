@@ -33,7 +33,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   text-align: center;
 }
 
@@ -42,7 +42,7 @@ body {
   font-size: 60px;
 }
 
-.splash-button{
+.splash-try-button{
     border-radius: 3px;
     background-color: #fff;
     padding: 25px;
@@ -53,12 +53,33 @@ body {
     font-style: bold;
 }
 
-.splash-button:hover {
+.splash-try-button:hover {
   background-color: lightgray;
 }
 
 .splash-bold {
   color: darkgoldenrod;
+}
+
+.splash-nav-div {
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.header-link {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  padding: 25px;
+}
+
+.header-link:hover {
+  text-decoration: underline;
+  text-decoration-color: white;
 }
 
 /* SIGN IN */
@@ -189,12 +210,13 @@ i {
   font-style: bold;
 }
 
-.logo-white {
+.logo-header {
   font-size: 40px;
   font-family: Helvetica;
   color: white;
   font-style: bold;
   text-decoration: none;
+  padding-top: 10px;
 }
 
 .logo-black {

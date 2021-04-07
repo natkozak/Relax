@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
+import SplashNav from './splash_nav'
 
 class Splash extends React.Component {
   constructor(props) {
@@ -9,10 +10,9 @@ class Splash extends React.Component {
   render() {
     return (
       <div className='splash-div'>
-        <Link className="logo-white" to='/'><i class="far fa-sun"></i><b>Relax</b></Link>
-        
+        <SplashNav />
         <h1 className='splash-header-text'>Relax makes it <b className='splash-bold'>downright pleasant</b> to work together</h1>
-        <Link to='/createnew' className='splash-button'>TRY FOR FREE</Link>
+        <Link to='/createnew' className='splash-try-button'>TRY FOR FREE</Link>
       </div>
     );
   }
