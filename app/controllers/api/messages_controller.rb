@@ -14,14 +14,14 @@ class Api::MessagesController < ApplicationController
     if @message.save
       render :show
     else # not sure if I need this
-      render json: @event.errors.full_messages, status: 422
+      render json: @message.errors.full_messages, status: 422
     end
   end
 
   def update
     # todo: only allow users to update their own messages
     @message = Message.find_by(id: params[:id])
-    if @message.update(event_params)
+    if @message.update(message_params)
       render :show
     else # not sure if I need this
       render json: @message.errors.full_messages, status: 422

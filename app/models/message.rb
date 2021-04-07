@@ -18,13 +18,10 @@ class Message < ApplicationRecord
     class_name: :User
 
 
-  after_initialize :ensure_default_channel, :attach_author_ownership
+  after_initialize :ensure_default_channel
 
   def ensure_default_channel
     self.channel_id ||= 1
   end
 
-  def attach_author_ownership #experimental
-    self.author_id = self.author.id
-  end
 end

@@ -12,6 +12,7 @@ class MessageIndexItem extends React.Component {
     return (
       <li>
         {this.props.message.content}
+        <Link to={`/messages/${this.props.message.id}/edit`}>Edit</Link>
         <button onClick={() => this.props.deleteMessage(this.props.message.id)}>Delete</button>
       </li>
     );
