@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -43,20 +44,22 @@ class Signup extends React.Component {
 
   render() {
     return (
-      <div className="signup-form">
-        <h1>Enter an email and password</h1>
-        <h3>We suggest using <b>the email address you use at work.</b></h3>
+      <div className="signup-form-div">
+        <Link className="logo-black" to='/'><i class="far fa-sun"></i><b>Relax</b></Link>
+        <h1 className="signup-header-text">Enter an email and password</h1>
+        <h3 className="use-work">We suggest using <b>the email address you use at work.</b></h3>
         
-        <div>Already using relax? {this.props.signinLink}</div>
-        <form onSubmit={this.handleSubmit}>
+        
+        <form className="signup-form" onSubmit={this.handleSubmit}>
+          <label className="email-label">Email:
+            <input className="email-input" type="text" value={this.state.email} onChange={this.handleInput('email')} />
+          </label>
+          <label className="password-label">Password:
+            <input className="password-input" type="password" value={this.state.password} onChange={this.handleInput('password')} />
+          </label>
           {this.renderErrors()}
-          <label>Email:
-            <input type="text" value={this.state.email} onChange={this.handleInput('email')} />
-          </label>
-          <label>Password:
-            <input type="password" value={this.state.password} onChange={this.handleInput('password')} />
-          </label>
-          <button onClick={this.handleSubmit}>Sign Up</button>
+          <button className="signup-button" onClick={this.handleSubmit}>Sign Up</button>
+          <div>Already using Relax? {this.props.signinLink}</div>
         </form>
       </div>
     );
