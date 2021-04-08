@@ -33,7 +33,7 @@ class Api::MessagesController < ApplicationController
     @message = Message.find_by(id: params[:id])
     @message.destroy
 
-    render :index
+    render :show
   end
 
   def message_params

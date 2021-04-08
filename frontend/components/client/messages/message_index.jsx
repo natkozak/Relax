@@ -19,9 +19,12 @@ class MessageIndex extends React.Component {
           <ul>
             {
               this.messagesArray.map((message) =>
-                <MessageIndexItem
-                  message={message}
+                <MessageIndexItem 
+                  message={message} 
+                  key={message.id} 
+                  updateMessage={this.props.updateMessage}
                   deleteMessage={this.props.deleteMessage}
+                  currentUser={this.props.currentUser}
                 />
               )
             }

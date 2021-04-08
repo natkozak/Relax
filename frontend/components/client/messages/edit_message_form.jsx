@@ -1,21 +1,16 @@
 import React from 'react';
 
+class EditMessageForm extends React.Component {
 
-class CreateMessageForm extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = this.props.message;
-
-    this.handleSubmit = this.handleSubmit.bind(this);
+  componentDidMount() {
+    this.props.requestMessage(this.props.match.params.messageId);
   }
-
 
   handleSubmit(e) {
     e.preventDefault();
 
     const newMessage = Object.assign({}, this.state);
-    this.props.submitMessage(newMessage);
+    this.props.updateMessage(newMessage);
   }
 
   change(label) {
@@ -23,24 +18,24 @@ class CreateMessageForm extends React.Component {
   }
 
   render() {
-    let placeholder = "Jot something down";
+    const { message} = this.props;
 
+    if (!message) return null;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
           <label>
             <input 
               type='text' 
-              value={this.state.content} 
-              placeholder={placeholder}
+              value={this.state.content}
               onChange={this.change('content')} />
           </label>
           
-          <button type='submit'><i className="fas fa-paper-plane"></i></button>
+          <button type='submit'><i className="fas fa-pen"></i></button>
         </form>
       </div>
     );
   }
 }
 
-export default CreateMessageForm;
+export default EditMessageForm;
