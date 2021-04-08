@@ -2,6 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import EditMessageFormContainer from "./edit_message_form_container"
 
+const ContentOrEditForm = (props) => {
+  console.log(props.editing);
+  console.log(props.message);
+  if (props.editing){
+    return <EditMessageFormContainer message={props.message} />;
+  } else {
+    return props.message.content;
+  }
+};
 
 class MessageIndexItem extends React.Component {
   constructor(props) {
@@ -25,6 +34,14 @@ class MessageIndexItem extends React.Component {
     this.setState({
       editing: true
     })
+    console.log(this.state);
+  }
+
+  handleClick(e) {
+    e.preventDefault()
+    this.setState({
+      editing: true
+    })
   }
 
   renderEditButton(){
@@ -37,11 +54,10 @@ class MessageIndexItem extends React.Component {
   }
 
   render() {
+
     return (
       <li>
-        { 
-          this.props.editing ? <EditMessageFormContainer /> : this.props.message.content
-        }
+        <ContentOrEditForm editing={this.state.editing} message={this.props.message} />
         {this.renderEditButton()}
         {this.renderDeleteButton()}
       </li>

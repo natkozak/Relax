@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 class CreateMessageForm extends React.Component {
   constructor(props) {
     super(props);
@@ -13,8 +12,9 @@ class CreateMessageForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
+    
     const newMessage = Object.assign({}, this.state);
+    console.log(newMessage);
     this.props.submitMessage(newMessage);
   }
 

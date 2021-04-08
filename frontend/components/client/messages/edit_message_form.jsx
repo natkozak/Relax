@@ -1,20 +1,29 @@
 import React from 'react';
 
 class EditMessageForm extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.state = this.props.message;
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
   componentDidMount() {
-    this.props.requestMessage(this.props.match.params.messageId);
+    this.props.requestMessage(this.props.message.id);
+    
   }
 
   handleSubmit(e) {
     e.preventDefault();
 
-    const newMessage = Object.assign({}, this.state);
-    this.props.updateMessage(newMessage);
+    this.props.updateMessage(this.state);
+    // todo: how to stop rendering form on submit? (same as blinking errors?)
+
   }
 
-  change(label) {
-    return e => this.setState({ [label]: e.currentTarget.value });
+  changeContent() {
+    return e => this.setState({ content: e.currentTarget.value });
   }
 
   render() {
@@ -28,7 +37,7 @@ class EditMessageForm extends React.Component {
             <input 
               type='text' 
               value={this.state.content}
-              onChange={this.change('content')} />
+              onChange={this.changeContent()} />
           </label>
           
           <button type='submit'><i className="fas fa-pen"></i></button>
