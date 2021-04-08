@@ -13,9 +13,14 @@ class EditMessageForm extends React.Component {
     this.props.requestMessage(this.props.message.id);
   }
 
+  dismiss() {
+    this.props.dismiss();
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    this.props.updateMessage(this.state);
+    this.props.updateMessage(this.state)
+      .then(() => this.dismiss());
   }
 
   changeContent() {

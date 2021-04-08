@@ -4,7 +4,9 @@ import EditMessageFormContainer from "./edit_message_form_container"
 
 const ContentOrEditForm = (props) => {
   if (props.editing){
-    return <EditMessageFormContainer message={props.message} />;
+    return <EditMessageFormContainer 
+              message={props.message} 
+              dismiss={props.dismiss}/>;
   } else {
     return props.message.content;
   }
@@ -17,6 +19,14 @@ class MessageIndexItem extends React.Component {
     this.state = {
       editing: false
     }
+
+    this.dismiss = this.dismiss.bind(this);
+  }
+
+  dismiss() {
+    this.setState({
+      editing: false
+    })
   }
 
   renderDeleteButton(){
@@ -56,7 +66,11 @@ class MessageIndexItem extends React.Component {
 
     return (
       <li>
-        <ContentOrEditForm editing={this.state.editing} message={this.props.message} />
+        <ContentOrEditForm 
+          editing={this.state.editing} 
+          message={this.props.message} 
+          dismiss={this.dismiss}
+          />
         {this.renderEditButton()}
         {this.renderDeleteButton()}
       </li>
