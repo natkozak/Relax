@@ -11,15 +11,11 @@ class EditMessageForm extends React.Component {
 
   componentDidMount() {
     this.props.requestMessage(this.props.message.id);
-    
   }
 
   handleSubmit(e) {
     e.preventDefault();
-
     this.props.updateMessage(this.state);
-    // todo: how to stop rendering form on submit? (same as blinking errors?)
-
   }
 
   changeContent() {

@@ -14,7 +14,6 @@ class CreateMessageForm extends React.Component {
     e.preventDefault();
     
     const newMessage = Object.assign({}, this.state);
-    console.log(newMessage);
     this.props.submitMessage(newMessage);
   }
 

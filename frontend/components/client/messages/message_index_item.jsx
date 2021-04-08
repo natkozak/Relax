@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import EditMessageFormContainer from "./edit_message_form_container"
 
 const ContentOrEditForm = (props) => {
-  console.log(props.editing);
-  console.log(props.message);
   if (props.editing){
     return <EditMessageFormContainer message={props.message} />;
   } else {
@@ -34,7 +32,6 @@ class MessageIndexItem extends React.Component {
     this.setState({
       editing: true
     })
-    console.log(this.state);
   }
 
   handleClick(e) {
@@ -46,6 +43,8 @@ class MessageIndexItem extends React.Component {
 
   renderEditButton(){
     if (this.props.currentUser != this.props.message.authorId) {
+      return null;
+    } else if (this.state.editing) {
       return null;
     }
     return (
