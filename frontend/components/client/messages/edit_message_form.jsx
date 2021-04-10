@@ -19,8 +19,12 @@ class EditMessageForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.updateMessage(this.state)
-      .then(() => this.dismiss());
+    const newMessage = Object.assign({}, this.state);
+    this.props.updateMessage(this.state).then(
+        App.cable.subscriptions.subscriptions[0].speak({
+        message: this.state.content })
+    ).then(() => this.dismiss());
+    this.setState({ content: "" });
   }
 
   changeContent() {

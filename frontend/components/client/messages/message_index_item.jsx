@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import EditMessageFormContainer from "./edit_message_form_container"
 
 
@@ -12,6 +11,16 @@ class MessageIndexItem extends React.Component {
     }
 
     this.dismissEditForm = this.dismissEditForm.bind(this);
+    // this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  handleDelete(e){
+    e.preventDefault();
+    this.props.deleteMessage(this.props.message.id).then(
+      App.cable.subscriptions.subscriptions[0].speak({
+        message: ""
+      })
+    );
   }
 
   renderDeleteButton(){
@@ -19,7 +28,7 @@ class MessageIndexItem extends React.Component {
       return null;
     }
     return (
-      <button onClick={() => this.props.deleteMessage(this.props.message.id)}>Delete</button>
+      <button onClick={this.handleDelete.bind(this)}>Delete</button>
     );
   }
 
@@ -50,11 +59,11 @@ class MessageIndexItem extends React.Component {
   render() {
 
     return (
-      <li>
+      <li key={this.props.liKey}>
         {this.state.editing ? <EditMessageFormContainer 
         message={this.props.message} 
         dismiss={this.dismissEditForm}/> : this.props.message.content}
-
+        <div ref={this.props.refForDiv} />
         {this.renderEditButton()}
         {this.renderDeleteButton()}
       </li>

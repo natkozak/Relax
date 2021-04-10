@@ -3,18 +3,17 @@ import React from 'react';
 class CreateMessageForm extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = this.props.message;
-
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
-
 
   handleSubmit(e) {
     e.preventDefault();
     
     const newMessage = Object.assign({}, this.state);
-    this.props.submitMessage(newMessage);
+    this.props.submitMessage(newMessage).then(
+      App.cable.subscriptions.subscriptions[0].speak({ message: this.state.content })
+    )
+    this.setState({content: ''});
   }
 
   change(label) {
@@ -22,18 +21,15 @@ class CreateMessageForm extends React.Component {
   }
 
   render() {
-    let placeholder = "Jot something down";
 
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            <input 
-              type='text' 
-              value={this.state.content} 
-              placeholder={placeholder}
-              onChange={this.change('content')} />
-          </label>
+        <form onSubmit={this.handleSubmit.bind(this)}>
+          <input 
+            type='text' 
+            value={this.state.content} 
+            placeholder={"Jot something down"}
+            onChange={this.change('content')} />
           
           <button type='submit'><i className="fas fa-paper-plane"></i></button>
         </form>
