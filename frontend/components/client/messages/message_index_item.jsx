@@ -2,15 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import EditMessageFormContainer from "./edit_message_form_container"
 
-const ContentOrEditForm = (props) => {
-  if (props.editing){
-    return <EditMessageFormContainer 
-              message={props.message} 
-              dismiss={props.dismiss}/>;
-  } else {
-    return props.message.content;
-  }
-};
 
 class MessageIndexItem extends React.Component {
   constructor(props) {
@@ -23,12 +14,6 @@ class MessageIndexItem extends React.Component {
     this.dismiss = this.dismiss.bind(this);
   }
 
-  dismiss() {
-    this.setState({
-      editing: false
-    })
-  }
-
   renderDeleteButton(){
     if (this.props.currentUser != this.props.message.authorId) {
       return null;
@@ -38,18 +23,6 @@ class MessageIndexItem extends React.Component {
     );
   }
 
-  openEditForm() {
-    this.setState({
-      editing: true
-    })
-  }
-
-  handleClick(e) {
-    e.preventDefault()
-    this.setState({
-      editing: true
-    })
-  }
 
   renderEditButton(){
     if (this.props.currentUser != this.props.message.authorId) {
@@ -62,15 +35,26 @@ class MessageIndexItem extends React.Component {
     );
   }
 
+  openEditForm() {
+    this.setState({
+      editing: true
+    })
+  }
+
+  dismissEditForm() {
+    this.setState({
+      editing: false
+    })
+  }
+
   render() {
 
     return (
       <li>
-        <ContentOrEditForm 
-          editing={this.state.editing} 
-          message={this.props.message} 
-          dismiss={this.dismiss}
-          />
+        {this.state.editing ? <EditMessageFormContainer 
+        message={this.props.message} 
+        dismiss={this.dismissEditForm}/> : this.props.message.content}
+
         {this.renderEditButton()}
         {this.renderDeleteButton()}
       </li>
