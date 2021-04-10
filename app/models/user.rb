@@ -11,13 +11,18 @@
 #  updated_at      :datetime         not null
 #
 class User < ApplicationRecord
-  attr_reader :password
+  attr_reader :password # why is it that when I try to add full_name as a reader, I can no longer display the user name in the search bar?
 
   validates :email, :password_digest, :session_token, :full_name, presence: true
   validates :email, :session_token, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: true
 
   after_initialize :ensure_session_token, :ensure_full_name
+
+  has_many :messages,
+    foreign_key: :author_id,
+    class_name: :Message
+
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
