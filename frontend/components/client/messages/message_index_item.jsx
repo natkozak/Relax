@@ -11,7 +11,6 @@ class MessageIndexItem extends React.Component {
     }
 
     this.dismissEditForm = this.dismissEditForm.bind(this);
-    // this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleDelete(e){

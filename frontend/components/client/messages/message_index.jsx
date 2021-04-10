@@ -5,7 +5,7 @@ class MessageIndex extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.state = { messages: [] };
+    this.state = { messages: [] };
     this.bottom = React.createRef();
   }
 
