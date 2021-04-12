@@ -4,9 +4,14 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def create(data)
-    message = Message.new(content: data['contentCreate'], author_id: data['authorCreate'])
+    message = Message.new(
+      content: data['contentCreate'], 
+      author_id: data['authorCreate']
+    )
     if message.save
-      socket = { message: message, type: 'message' }
+      socket = { 
+        message: message,
+        type: 'message' }
       ChatChannel.broadcast_to('chat_channel', socket)
     end
   end

@@ -1,5 +1,5 @@
 import React from 'react';
-import MessageIndexItem from './message_index_item';
+import MessageIndexItemContainer from './message_index_item_container';
 
 class MessageIndex extends React.Component {
   constructor(props) {
@@ -54,7 +54,7 @@ class MessageIndex extends React.Component {
   render() {
     const messagesIndex = this.state.messages.map((message, idx) => {
       return (
-        <MessageIndexItem
+        <MessageIndexItemContainer
           key={message.id}
           message={message}
           liKey={`li${message.id}`}
