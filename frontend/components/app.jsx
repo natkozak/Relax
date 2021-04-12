@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
+import { Redirect, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../utils/route_utils';
 import SplashContainer from './splash/splash_container'
 import ClientContainer from './client/client_container';

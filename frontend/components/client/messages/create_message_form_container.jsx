@@ -4,11 +4,7 @@ import CreateMessageForm from './create_message_form';
 
 
 const mapSTP = (state) => ({
-  message: {
-    content: '',
     author_id: state.session.id
-  },
-  formType: 'Create Message'
 });
 
 const mapDTP = dispatch => ({

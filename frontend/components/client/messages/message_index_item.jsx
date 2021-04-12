@@ -1,5 +1,5 @@
 import React from 'react';
-import EditMessageFormContainer from "./edit_message_form_container"
+import EditMessageForm from './edit_message_form'
 
 
 class MessageIndexItem extends React.Component {
@@ -7,47 +7,31 @@ class MessageIndexItem extends React.Component {
     super(props);
 
     this.state = {
-      editing: false
+      editing: false,
+      content: ""
     }
 
     this.dismissEditForm = this.dismissEditForm.bind(this);
   }
 
-  handleDelete(e){
+  handleDelete(e) {
     e.preventDefault();
-    this.props.deleteMessage(this.props.message.id).then(
-      App.cable.subscriptions.subscriptions[0].speak({
-        message: ""
-      })
-    );
-  }
-
-  renderDeleteButton(){
-    if (this.props.currentUser != this.props.message.authorId) {
-      return null;
-    }
-    return (
-      <button onClick={this.handleDelete.bind(this)}>Delete</button>
-    );
-  }
-
-
-  renderEditButton(){
-    if (this.props.currentUser != this.props.message.authorId) {
-      return null;
-    } else if (this.state.editing) {
-      return null;
-    }
-    return (
-      <button onClick={() => this.openEditForm()}>Edit</button>
-    );
+    App.cable.subscriptions.subscriptions[0].destroy({
+      messageId: this.props.message.id
+    });
   }
 
   openEditForm() {
-    this.setState({
+    return this.setState({
       editing: true
     })
   }
+
+  // openEditForm() {
+  //   this.setState({
+  //     editing: true
+  //   })
+  // }
 
   dismissEditForm() {
     this.setState({
@@ -56,15 +40,17 @@ class MessageIndexItem extends React.Component {
   }
 
   render() {
+    const editCheck = (this.props.currentUser === this.props.message.author_id) && (!this.state.editing);
+    const deleteCheck = this.props.currentUser === this.props.message.author_id;
 
     return (
       <li key={this.props.liKey}>
-        {this.state.editing ? <EditMessageFormContainer 
+        {this.state.editing ? <EditMessageForm 
         message={this.props.message} 
         dismiss={this.dismissEditForm}/> : this.props.message.content}
         <div ref={this.props.refForDiv} />
-        {this.renderEditButton()}
-        {this.renderDeleteButton()}
+        {editCheck ? <button onClick={() => this.openEditForm.bind(this)}>Edit</button> : null }
+        {deleteCheck ? <button onClick={() => this.handleDelete.bind(this)}>Delete</button> : null}
       </li>
     );
   }

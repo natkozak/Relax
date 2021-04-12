@@ -3,23 +3,41 @@ class ChatChannel < ApplicationCable::Channel
     stream_for 'chat_channel'
   end
 
-  def unsubscribed
-    # Any cleanup needed when channel is unsubscribed
-  end
-
-  def speak(data)
-    message = Message.new(content: data['message'])
+  def create(data)
+    message = Message.new(content: data['contentCreate'], author_id: data['authorCreate'])
     if message.save
-      socket = { message: message.content, type: 'message' }
+      socket = { message: message, type: 'message' }
       ChatChannel.broadcast_to('chat_channel', socket)
     end
   end
 
   def load
-    @messages = Message.all.collect(&:content)
-    # channel = Channel.find(params[:id])
-    # messages = channel.messages.all
-    socket = { messages: @messages, type: 'messages' }
+    # messages = Message.all.collect(&:content)
+    messages = Message.all
+    socket = { messages: messages, type: 'messages' }
     ChatChannel.broadcast_to('chat_channel', socket)
   end
+
+  def edit(data)
+    message = Message.find_by(id: data['messageId'])
+    if message.update(content: data['contentUpdate'])
+      # socket = { message: message, type: 'editMessage', id: data['messageId']}
+      # ChatChannel.broadcast_to('chat_channel', socket)
+      messages = Message.all
+      socket = { messages: messages, type: 'messages' }
+      ChatChannel.broadcast_to('chat_channel', socket)
+    end
+  end
+
+  def destroy(data)
+    message = Message.find_by(id: data['messageId'])
+    message.destroy
+    
+    messages = Message.all
+    socket = { messages: messages, type: 'messages' }
+    ChatChannel.broadcast_to('chat_channel', socket)
+  end
+
+ def unsubscribed; end
+
 end

@@ -246,3 +246,29 @@ i {
   padding: 5px;
   background-color: pink;
 }
+
+/* MESSAGES */
+
+* {
+  margin: 2px;
+  padding: 5px;
+}
+
+.client-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message-index-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message-index {
+  overflow-y: scroll;
+  height: 300px;
+  width: 400px;
+  border: solid gray 1px;
+}

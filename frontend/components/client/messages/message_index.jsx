@@ -4,21 +4,17 @@ import MessageIndexItem from './message_index_item';
 class MessageIndex extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = { messages: [] };
+    this.state = { messages: [], loaded: false };
     this.bottom = React.createRef();
   }
 
   componentDidMount() {
-    this.props.requestMessages();
-
     App.cable.subscriptions.create(
       { channel: "ChatChannel" },
       {
         received: data => {
           switch (data.type) {
             case "message":
-              // setting state to an object that contains many messages
               this.setState({
                 messages: this.state.messages.concat(data.message)
               });
@@ -26,44 +22,53 @@ class MessageIndex extends React.Component {
             case "messages":
               this.setState({ messages: data.messages });
               break;
+            case "editMessage":
+              this.setState({
+                messages: data.messages
+              });
+              break;
           }
         },
-        speak: function (data) { return this.perform("speak", data) },
-        load: function () { return this.perform("load") }
+        create: function (data) { return this.perform("create", data) },
+        load: function () { return this.perform("load") },
+        edit: function (data) { return this.perform("edit", data) },
+        destroy: function (data) { return this.perform("destroy", data) }
       }
     );
-  }
 
-  loadChat(e) {
-    e.preventDefault();
-    App.cable.subscriptions.subscriptions[0].load();
+    if (!this.state.loaded) {
+      this.state.loaded = App.cable.subscriptions.subscriptions[0].load();
+    }
   }
 
   componentDidUpdate() {
+    if (!this.state.loaded) {
+      this.state.loaded = App.cable.subscriptions.subscriptions[0].load();
+    }
     if (this.bottom.current != null) {
       this.bottom.current.scrollIntoView();
     }
-    
   }
 
+
   render() {
-    const messages = this.props.messages;
-    this.messagesArray = Object.values(messages)
-    const messagesIndex = this.messagesArray.map((message) =>
-      <MessageIndexItem
-        message={message}
-        key={message.id}
-        updateMessage={this.props.updateMessage}
-        deleteMessage={this.props.deleteMessage}
-        currentUser={this.props.currentUser}
-        liKey={`li${message.id}`}
-        refForDiv={this.bottom}
-      />
-    )
+    const messagesIndex = this.state.messages.map((message, idx) => {
+      return (
+        <MessageIndexItem
+          key={message.id}
+          message={message}
+          liKey={`li${message.id}`}
+          refForDiv={this.bottom}
+          currentUser={this.props.currentUser}
+        />
+      );
+    })
 
     return (
-      <div>
-          <div className="message-list">{messagesIndex}</div>
+      <div className="message-index-container">
+          <div className="message-index"> 
+            {messagesIndex}
+          </div>
       </div>
     );
   }
