@@ -1,6 +1,7 @@
 class Api::MessagesController < ApplicationController
   def index
     @messages = Message.all
+    # @messages = Message.all.includes(:author)
     render :index
   end
 

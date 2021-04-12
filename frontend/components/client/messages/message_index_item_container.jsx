@@ -8,7 +8,6 @@ const mapSTP = (state, ownProps) => ({
 });
 
 const mapDTP = dispatch => ({
-  requestUser: (userId) => dispatch(requestUser(userId)),
 });
 
 export default connect(mapSTP, mapDTP)(MessageIndexItem);
