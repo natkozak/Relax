@@ -33,7 +33,7 @@ class EditMessageForm extends React.Component {
           <input 
             type='text' 
             value={this.state.content}
-            onChange={this.changeContent()} />
+            onChange={this.update('content')} />
           
           <button type='submit'><i className="fas fa-pen"></i></button>
         </form>

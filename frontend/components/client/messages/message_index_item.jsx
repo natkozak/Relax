@@ -1,7 +1,6 @@
 import React from 'react';
 import EditMessageForm from './edit_message_form'
 
-
 class MessageIndexItem extends React.Component {
   constructor(props) {
     super(props);
@@ -14,29 +13,23 @@ class MessageIndexItem extends React.Component {
     this.dismissEditForm = this.dismissEditForm.bind(this);
   }
 
-  handleDelete(e) {
-    e.preventDefault();
-    App.cable.subscriptions.subscriptions[0].destroy({
-      messageId: this.props.message.id
-    });
-  }
-
   openEditForm() {
     return this.setState({
       editing: true
     })
   }
 
-  // openEditForm() {
-  //   this.setState({
-  //     editing: true
-  //   })
-  // }
-
   dismissEditForm() {
     this.setState({
       editing: false
     })
+  }
+
+  handleDelete(e) {
+    e.preventDefault();
+    App.cable.subscriptions.subscriptions[0].destroy({
+      messageId: this.props.message.id
+    });
   }
 
   render() {
@@ -49,8 +42,8 @@ class MessageIndexItem extends React.Component {
         message={this.props.message} 
         dismiss={this.dismissEditForm}/> : this.props.message.content}
         <div ref={this.props.refForDiv} />
-        {editCheck ? <button onClick={() => this.openEditForm.bind(this)}>Edit</button> : null }
-        {deleteCheck ? <button onClick={() => this.handleDelete.bind(this)}>Delete</button> : null}
+        {editCheck ? <button onClick={this.openEditForm.bind(this)}>Edit</button> : null }
+        {deleteCheck ? <button onClick={this.handleDelete.bind(this)}>Delete</button> : null}
       </li>
     );
   }
