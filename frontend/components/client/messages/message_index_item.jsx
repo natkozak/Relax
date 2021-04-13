@@ -12,8 +12,6 @@ class MessageIndexItem extends React.Component {
 
     this.dismissEditForm = this.dismissEditForm.bind(this);
     this.authorId = this.props.message.author_id;
-    this.renderName = this.renderName.bind(this);
-    this.userFullName = "placeholderName";
   }
 
   openEditForm() {
@@ -43,26 +41,21 @@ class MessageIndexItem extends React.Component {
     return time;
   }
 
-  renderName() {
-    return this.props.fullName
-    // // this.user = this.props.requestUser(this.authorId);
-    // return this.user.fullName;
-  }
-
   render() {
     console.log("MessageIndexItem#render#this.state", this.state);
     console.log("MessageIndexItem#render#this.props", this.props);
     const editCheck = (this.props.currentUser === this.authorId) && (!this.state.editing);
     const deleteCheck = this.props.currentUser === this.authorId;
-    if (this.state.loaded) {
-      this.userFullName = this.renderName();
-    }
+
+    // todo: put this.formatTime() into the render string
+
+    // todo: factor out this.props.fullName into a method call
 
     return (
       <li key={this.props.liKey}>
         {this.state.editing ? <EditMessageForm 
         message={this.props.message} 
-          dismiss={this.dismissEditForm} /> : `(${this.formatTime()}) ${this.props.fullName} ${this.props.message.content}`}
+          dismiss={this.dismissEditForm} /> : `${this.props.fullName} ${this.props.message.content}`}
         <div ref={this.props.refForDiv} />
         {editCheck ? <button onClick={this.openEditForm.bind(this)}>Edit</button> : null }
         {deleteCheck ? <button onClick={this.handleDelete.bind(this)}>Delete</button> : null}

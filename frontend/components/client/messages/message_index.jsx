@@ -1,6 +1,7 @@
 import React from 'react';
 import { receiveMessage, receiveMessages } from '../../../actions/message_actions';
 import MessageIndexItemContainer from './message_index_item_container';
+import CreateMessageFormContainer from "./create_message_form_container"
 
 class MessageIndex extends React.Component {
   constructor(props) {
@@ -102,6 +103,7 @@ class MessageIndex extends React.Component {
           <div className="message-index"> 
             {messagesIndex}
           </div>
+        <CreateMessageFormContainer />
       </div>
     );
   }

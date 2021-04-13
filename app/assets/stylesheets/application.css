@@ -65,7 +65,7 @@ body {
   width: 100%;
   top: 0;
   left: 0;
-  padding: 20px;
+  padding-top: 20px;
   display: flex;
   justify-content: space-around;
 }
@@ -84,12 +84,15 @@ body {
 
 /* SIGN IN */
 
-.signin-form-div {
+.signin-form-background {
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
+}
+
+.signin-form-div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -145,12 +148,15 @@ body {
   font-size: 48px;
 }
 
-.signup-form-div {
+.signup-form-background{
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
+}
+
+.signup-form-div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -247,28 +253,89 @@ i {
   background-color: pink;
 }
 
-/* MESSAGES */
+/* CLIENT */
 
-* {
-  margin: 2px;
+.client-div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+  background-color: #611f69;
+}
+
+.client-channels-messages {
+  background-color: yellow;
+  display: flex;
+  height: 90%;
+}
+
+/* NAV BAR */
+
+.nav-bar-header {
+  top: 0;
+  left: 0;
+  display: flex;
+  border-bottom: white 1px solid;
+  justify-content: space-around;
+  background-color: blue;
+}
+
+
+.nav-bar-div {
+  display: flex;
+  background-color: #611f69;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.nav-bar-credentials {
+  display: flex;
+  align-items: center;
   padding: 5px;
 }
 
-.client-div {
+.nav-bar-greeting {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  color: white;
+  padding: 5px;
 }
+
+.nav-bar-logout {
+  border-radius: 5px;
+  display: flex;
+  background-color: whitesmoke;
+  height: 100%;
+  border: white;
+  padding: 5px;
+}
+
+/* CHANNELS */
+
+.channel-sidebar {
+  background-color: #611f69;
+  width: 20%;
+}
+
+/* MESSAGES */
 
 .message-index-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* height: 100%; */
+  width: 100%;
+  background-color: white;
 }
 
 .message-index {
+  list-style: none;
   overflow-y: scroll;
-  height: 300px;
-  width: 400px;
-  border: solid gray 1px;
+  height: 100%;
+  width: 100%;
+  background-color: white;
 }

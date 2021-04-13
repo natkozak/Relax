@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 const SearchBar = ({ currentUser, logout }) => {
   const display = currentUser ? (
-    <div>
-      <p>Hello, {currentUser.fullName}</p>
-      <button onClick={logout}>Log Out</button>
+    <div className="nav-bar-credentials">
+      <div className="nav-bar-greeting">Signed in as {currentUser.fullName}</div>
+      <button onClick={logout} className="nav-bar-logout">Sign out of Relax</button>
     </div>
   ) : (
     <div>
@@ -15,11 +15,11 @@ const SearchBar = ({ currentUser, logout }) => {
   );
 
   return (
-    <header className="nav-bar">
-      <div>
+    <div className="nav-bar-header">
+      <div className="nav-bar-div">
         {display}
       </div>
-    </header>
+    </div>
   );
 };
 

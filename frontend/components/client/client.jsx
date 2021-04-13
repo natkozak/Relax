@@ -2,6 +2,7 @@ import React from "react";
 import SearchBarContainer from "./search_bar/search_bar_container";
 import MessageIndexContainer from "./messages/message_index_container"
 import CreateMessageFormContainer from "./messages/create_message_form_container"
+import ChannelSidebar from "./channels/channel_sidebar";
 
 class Client extends React.Component {
   constructor(props) {
@@ -17,8 +18,10 @@ class Client extends React.Component {
     return (
       <div className="client-div">
         <SearchBarContainer />
-        <MessageIndexContainer />
-        <CreateMessageFormContainer />
+        <div className="client-channels-messages">
+          <ChannelSidebar />
+          <MessageIndexContainer />
+        </div>
       </div>
         
     );
