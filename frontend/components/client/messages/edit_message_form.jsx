@@ -9,7 +9,8 @@ class EditMessageForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     App.cable.subscriptions.subscriptions[0].edit({
-      messageId: this.state.id, contentUpdate: this.state.content
+      messageId: this.state.id, 
+      contentUpdate: this.state.content
     });
     this.setState({ content: "" });
     this.dismiss();

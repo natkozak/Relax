@@ -12,26 +12,30 @@ class MessageIndex extends React.Component {
   }
 
   componentDidMount() {
+    this.props.requestMessages();
+    console.log("MessageIndex#componentDidMount#this.props: ", this.props);
+
+    // if I factor this into a different file, I need to write a function that takes arguments of the actions I want to use. they shouldn't need to be bound.
     App.cable.subscriptions.create(
       { channel: "ChatChannel" },
       {
         received: data => {
           switch (data.type) {
             case "message":
-              this.setState({
-                messages: Object.assign(this.state.messages, data.message)
-              });
-              // this.receiveMessage(data); doesn't work
+              // this.setState({
+              //   messages: Object.assign(this.state.messages, data.message)
+              // });
+              this.props.receiveMessage(data.message); //doesn't work
+              console.log("created message", data.message)
               break;
             case "messages":
-              this.setState({messages: data.messages});
-              // this.receiveMessages(data); doesn't work
-              break;
-            case "editMessage":
-              this.setState({
-                messages: data.messages
-              });
-              break;
+              // don't need this function because I use requestMessages to get messages into props via AJAX
+              // this.setState({messages: data.messages});
+              // this.props.receiveMessages(data); // doesn't work
+            break;
+            case "deleteMessage":
+              this.props.removeMessage(data.messageId)
+            break;
           }
         },
         create: function (data) { return this.perform("create", data) },
@@ -44,9 +48,13 @@ class MessageIndex extends React.Component {
     if (!this.state.loaded) {
       this.state.loaded = App.cable.subscriptions.subscriptions[0].load();
     }
+
+    console.log("MessageIndex#componentDidMount#this.props: ", this.props)
   }
 
   componentDidUpdate() {
+    console.log("MessageIndexItem#componentDidUpdate#this.state", this.state);
+    console.log("MessageIndexItem#componentDidUpdate#this.props", this.props);
     if (!this.state.loaded) {
       this.state.loaded = App.cable.subscriptions.subscriptions[0].load();
     }
@@ -56,23 +64,23 @@ class MessageIndex extends React.Component {
   }
 
   getName(id){
-    // if (this.state.loaded) {
-    //   console.log("this.props (loaded): ", this.props.messages[id].fullName)
-    //   // this.fullName =  this.props.messages[message.id].fullName
-    //   return this.props.messages[id].fullName;
-    // } else {
-    //   return null
-    // }
-
-    // return this.fullName = `nameFromIndex${id}`
-
     if (this.state.loaded) {
-      return this.state.messages[id].author_name;
-    //   // this.fullName =  this.props.messages[message.id].fullName
-    //   return this.props.messages[id].fullName;
+      console.log("this.props (loaded): ", this.props.messages[id].fullName)
+      // this.fullName =  this.props.messages[message.id].fullName
+      return this.props.messages[id].fullName;
     } else {
       return null
     }
+
+    // return this.fullName = `nameFromIndex${id}`
+
+    // if (this.state.loaded) {
+    //   return this.state.messages[id].fullName;
+    // //   // this.fullName =  this.props.messages[message.id].fullName
+    // //   return this.props.messages[id].fullName;
+    // } else {
+    //   return null
+    // }
   }
 
 
@@ -82,13 +90,14 @@ class MessageIndex extends React.Component {
     //   this.state.rendered = true;
     // }
     console.log("MessageIndex#render#this.state", this.state);
-    // console.log("MessageIndex#render#this.props", this.props);
+    console.log("MessageIndex#render#this.props", this.props);
     // debugger
-    const messagesList = Object.values(this.state.messages)
+    // const messagesList = Object.values(this.state.messages);
+    const messagesList = Object.values(this.props.messages);
     const messagesIndex = messagesList.map((message, idx) => {
       return (
         <MessageIndexItemContainer
-          fullName={this.getName(message.id)}
+          // fullName={this.getName(message.id)}
           key={message.id}
           message={message}
           liKey={`li${message.id}`}

@@ -4,15 +4,17 @@ class CreateMessageForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { content: "" };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
     App.cable.subscriptions.subscriptions[0].create({ 
       contentCreate: this.state.content,
-      authorCreate: this.props.author_id
+      authorCreate: this.props.authorId
+      // refactor to include channelId later
     });
-    this.setState({ content: '' });
+    this.setState({ content: "" });
   }
 
   update(field) {
@@ -23,7 +25,7 @@ class CreateMessageForm extends React.Component {
 
     return (
       <div>
-        <form onSubmit={this.handleSubmit.bind(this)}>
+        <form onSubmit={this.handleSubmit}>
           <input 
             type='text' 
             value={this.state.content} 

@@ -11,7 +11,7 @@ class MessageIndexItem extends React.Component {
     }
 
     this.dismissEditForm = this.dismissEditForm.bind(this);
-    this.authorId = this.props.message.author_id;
+    this.authorId = this.props.message.authorId;
   }
 
   openEditForm() {
@@ -35,15 +35,15 @@ class MessageIndexItem extends React.Component {
 
   // 2021-04-12T02:25:35.121Z
   formatTime(){
-    let datetime = this.props.message.created_at;
+    let datetime = this.props.message.createdAt;
     let [date, timezone] = datetime.split("T");
     let [time, zone] = timezone.split(".");
     return time;
   }
 
   render() {
-    console.log("MessageIndexItem#render#this.state", this.state);
-    console.log("MessageIndexItem#render#this.props", this.props);
+    // console.log("MessageIndexItem#render#this.state", this.state);
+    // console.log("MessageIndexItem#render#this.props", this.props);
     const editCheck = (this.props.currentUser === this.authorId) && (!this.state.editing);
     const deleteCheck = this.props.currentUser === this.authorId;
 
@@ -55,7 +55,7 @@ class MessageIndexItem extends React.Component {
       <li key={this.props.liKey}>
         {this.state.editing ? <EditMessageForm 
         message={this.props.message} 
-          dismiss={this.dismissEditForm} /> : `${this.props.fullName} ${this.props.message.content}`}
+          dismiss={this.dismissEditForm} /> : `${this.props.message.fullName} ${this.props.message.content}`}
         <div ref={this.props.refForDiv} />
         {editCheck ? <button onClick={this.openEditForm.bind(this)}>Edit</button> : null }
         {deleteCheck ? <button onClick={this.handleDelete.bind(this)}>Delete</button> : null}

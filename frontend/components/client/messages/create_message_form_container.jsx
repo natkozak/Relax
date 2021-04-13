@@ -4,7 +4,8 @@ import CreateMessageForm from './create_message_form';
 
 
 const mapSTP = (state) => ({
-    author_id: state.session.id
+    authorId: state.session.id
+    // should get the channelId from props at some point
 });
 
 const mapDTP = dispatch => ({
