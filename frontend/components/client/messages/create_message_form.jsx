@@ -24,15 +24,15 @@ class CreateMessageForm extends React.Component {
   render() {
 
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input 
+      <div className="create-message-div">
+        <form onSubmit={this.handleSubmit} className="create-message-form" >
+          <input className="create-message-input"
             type='text' 
             value={this.state.content} 
             placeholder={"Jot something down"}
             onChange={this.update('content')} />
           
-          <button type='submit'><i className="fas fa-paper-plane"></i></button>
+          <button type='submit' className="create-message-submit-button"><i className="fas fa-paper-plane fa-2x"></i></button>
         </form>
       </div>
     );
