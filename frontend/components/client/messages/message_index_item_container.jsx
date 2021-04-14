@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import {  } from '/frontend/actions/message_actions';
 import MessageIndexItem from './message_index_item';
 
 const mapSTP = (state, ownProps) => ({
