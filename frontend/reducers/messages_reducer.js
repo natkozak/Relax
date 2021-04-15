@@ -1,5 +1,6 @@
 import {
   RECEIVE_MESSAGES,
+  RECEIVE_COMMENTS,
   RECEIVE_MESSAGE,
   REMOVE_MESSAGE
 } from '../actions/message_actions';

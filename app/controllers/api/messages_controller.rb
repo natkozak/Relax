@@ -1,8 +1,14 @@
 class Api::MessagesController < ApplicationController
   def index
-    @messages = Message.all
+    @messages = Message.all.where(top_id: nil)
     # @messages = Message.all.includes(:author)
     render :index
+  end
+
+  def comments
+    @comments = Message.all.where(top_id: !nil)
+
+    render :comments
   end
 
   def show

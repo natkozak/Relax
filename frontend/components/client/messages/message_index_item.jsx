@@ -15,6 +15,10 @@ class MessageIndexItem extends React.Component {
     this.renderNameMessage = this.renderNameMessage.bind(this);
   }
 
+  openComments(){
+    this.props.openComments(this.props.message.id);
+  }
+
   openEditForm() {
     return this.setState({
       editing: true
@@ -60,8 +64,6 @@ class MessageIndexItem extends React.Component {
 
     // todo: put this.formatTime() into the render string
 
-    // todo: factor out this.props.fullName into a method call
-
     return (
       <li key={this.props.liKey} className="message-index-item-li">
         {this.state.editing ? <EditMessageForm 
@@ -71,6 +73,7 @@ class MessageIndexItem extends React.Component {
         <div className="message-buttons">
         {editCheck ? <button className="edit-message-button" onClick={this.openEditForm.bind(this)}>Edit</button> : null }
         {deleteCheck ? <button className="delete-message-button" onClick={this.handleDelete.bind(this)}>Delete</button> : null}
+        <button className="comment-message-button" onClick={this.openComments.bind(this)}>Comment</button>
         </div>
       </li>
     );

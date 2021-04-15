@@ -2,6 +2,7 @@ import * as MessageAPIUtil from '../utils/message_api_util';
 
 
 export const RECEIVE_MESSAGES = 'RECEIVE_MESSAGES';
+export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
 export const REMOVE_MESSAGE = 'REMOVE_MESSAGE';
 
@@ -10,6 +11,13 @@ export const receiveMessages = (messages) => {
   return {
     type: RECEIVE_MESSAGES,
     messages
+  }
+}
+
+export const receiveComments = (comments) => {
+  return {
+    type: RECEIVE_COMMENTS,
+    comments
   }
 }
 
@@ -27,6 +35,10 @@ export const removeMessage = (messageId) => {
   }
 }
 
+export const requestComments = (topId) => dispatch => (
+  MessageAPIUtil.fetchComments(topId)
+    .then(comments => dispatch(receiveComments(comments)))
+);
 
 export const requestMessages = () => dispatch => (
   MessageAPIUtil.fetchMessages()
