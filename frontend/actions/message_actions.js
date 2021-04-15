@@ -4,6 +4,7 @@ import * as MessageAPIUtil from '../utils/message_api_util';
 export const RECEIVE_MESSAGES = 'RECEIVE_MESSAGES';
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
+export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
 export const REMOVE_MESSAGE = 'REMOVE_MESSAGE';
 
 
@@ -25,6 +26,13 @@ export const receiveMessage = (message) => {
   return {
     type: RECEIVE_MESSAGE,
     message
+  }
+}
+
+export const receiveComment = (comment) => {
+  return {
+    type: RECEIVE_COMMENT,
+    comment
   }
 }
 
@@ -50,17 +58,17 @@ export const requestMessage = (messageId) => dispatch => (
     .then(message => dispatch(receiveMessage(message)))
 );
 
-export const createMessage = (message) => dispatch => (
-  MessageAPIUtil.createMessage(message)
-  .then(message => dispatch(receiveMessage(message)))
-);
+// export const createMessage = (message) => dispatch => (
+//   MessageAPIUtil.createMessage(message)
+//   .then(message => dispatch(receiveMessage(message)))
+// );
 
-export const updateMessage = (message) => dispatch => (
-  MessageAPIUtil.updateMessage(message)
-  .then(message => dispatch(receiveMessage(message)))
-);
+// export const updateMessage = (message) => dispatch => (
+//   MessageAPIUtil.updateMessage(message)
+//   .then(message => dispatch(receiveMessage(message)))
+// );
 
-export const deleteMessage = (messageId) => dispatch => (
-  MessageAPIUtil.deleteMessage(messageId)
-  .then(() => dispatch(removeMessage(messageId)))
-);
+// export const deleteMessage = (messageId) => dispatch => (
+//   MessageAPIUtil.deleteMessage(messageId)
+//   .then(() => dispatch(removeMessage(messageId)))
+// );

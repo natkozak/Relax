@@ -1,5 +1,12 @@
 import { connect } from 'react-redux';
-import { requestMessages, requestMessage, receiveMessages, receiveMessage, removeMessage } from '/frontend/actions/message_actions';
+import { 
+  requestMessages, 
+  requestMessage, 
+  receiveMessages, 
+  receiveMessage, 
+  removeMessage, 
+  receiveComment 
+} from '/frontend/actions/message_actions';
 import MessageIndex from './message_index';
 
 const mapSTP = state => ({
@@ -12,7 +19,8 @@ const mapDTP = dispatch => ({
   requestMessages: () => dispatch(requestMessages()),
   receiveMessage: (message) => dispatch(receiveMessage(message)),
   receiveMessages: (messages) => dispatch(receiveMessages(messages)),
-  removeMessage: (messageId) => dispatch(removeMessage(messageId))
+  removeMessage: (messageId) => dispatch(removeMessage(messageId)),
+  receiveComment: (comment) => dispatch(receiveComment(comment))
 });
 
 export default connect(mapSTP, mapDTP)(MessageIndex);

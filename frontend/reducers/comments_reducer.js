@@ -1,5 +1,5 @@
 import {
-  RECEIVE_COMMENTS
+  RECEIVE_COMMENTS, RECEIVE_COMMENT
 } from '../actions/message_actions';
 
 const CommentsReducer = (state = {}, action) => {
@@ -8,6 +8,8 @@ const CommentsReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_COMMENTS:
       return Object.assign({}, state, action.comments)
+    case RECEIVE_COMMENT:
+      return Object.assign({}, state, action.comment)
     default:
       return state;
   }

@@ -5,8 +5,8 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def create(data)
+    # comments
     if data['topCreate']
-
       comment = Message.new(
         content: data['contentCreate'], 
         author_id: data['authorCreate'],
@@ -17,10 +17,11 @@ class ChatChannel < ApplicationCable::Channel
         comment_hash = Hash.new
         comment_hash[comment.id] = comment.attributes.deep_transform_keys! { |key| key.camelize(:lower) }
         comment_hash[comment.id]["fullName"] = author.full_name
-        socket = { comment: comment, type: 'comment' }
+        socket = { comment: comment_hash, type: 'comment' }
         ChatChannel.broadcast_to('chat_channel', socket)
       end
 
+    # top-level messages
     else
       message = Message.new(
         content: data['contentCreate'], 
@@ -35,6 +36,7 @@ class ChatChannel < ApplicationCable::Channel
         ChatChannel.broadcast_to('chat_channel', socket)
       end
     end
+
 
   end
 
