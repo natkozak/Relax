@@ -65,7 +65,7 @@ class MessageIndex extends React.Component {
     // console.log("MessageIndex#render#this.state", this.state);
     // console.log("MessageIndex#render#this.props", this.props);
     const messagesList = Object.values(this.props.messages);
-    const messagesIndex = messagesList.map((message, idx) => {
+    const messagesIndex = messagesList.map((message) => {
       return (
         <MessageIndexItemContainer
           key={message.id}

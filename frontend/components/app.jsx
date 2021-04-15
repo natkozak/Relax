@@ -5,12 +5,14 @@ import SplashContainer from './splash/splash_container'
 import ClientContainer from './client/client_container';
 import SignupContainer from './session/signup_container';
 import SigninContainer from './session/signin_container';
-
+import ModalsContainer from './modals/modals_container';
 
 
 
 const App = () => (
   <div>
+    <ModalsContainer />
+
     <Switch>
       <AuthRoute exact path='/' component={SplashContainer} />
       <AuthRoute exact path='/signin' component={SigninContainer} />

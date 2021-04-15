@@ -1,5 +1,7 @@
 class Channel < ApplicationRecord
-  validates :name, :is_private, :is_direct, presence: true
+  validates :name, presence: true
+  validates_inclusion_of :is_private, :in => [true, false]
+  validates_inclusion_of :is_direct, :in => [true, false]
   validates :name, length: { minimum: 1 }
   # can I validate that direct messages are always private here?
 

@@ -44,11 +44,11 @@ class MessageIndexItem extends React.Component {
 
   renderNameMessage(){
     return (
-      <p className="render-name-message">
+      <div className="render-name-message">
         <div><b>{this.props.message.fullName}</b></div>
         
         <div>{this.props.message.content}</div>
-      </p>
+      </div>
     )
   }
 
