@@ -3,7 +3,7 @@ import Modals from './modals';
 
 const mapSTP = state => {
   return ({
-    // active modal conditional from ui slice of state
+    modal: state.ui.modal
   })
 };
 
