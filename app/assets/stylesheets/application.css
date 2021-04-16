@@ -325,9 +325,15 @@ i {
 
 .message-index-container {
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  background-color: white;
+}
+
+.message-index-and-create {
+  display: flex;
   align-items: center;
-  /* height: 100%; */
+  flex-direction: column;
+  height: 100%;
   width: 100%;
   background-color: white;
 }
@@ -375,6 +381,26 @@ i {
 .message-buttons {
   align-self: flex-end;
 }
+
+/* COMMENTS */
+
+.comment-index-container {
+  display: flex;
+  flex-direction: column;
+  /* background-color: blue; */
+}
+
+.comment-index {
+  list-style: none;
+  overflow-y: scroll;
+  width: 100%;
+  /* background-color: yellow; */
+}
+
+
+
+
+
 
 /* .edit-message-button {
   align-self: flex-end;

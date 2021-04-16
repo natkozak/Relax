@@ -5,18 +5,39 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def create(data)
-    message = Message.new(
-      content: data['contentCreate'], 
-      author_id: data['authorCreate']
-    )
-    if message.save
-      author = User.find_by(id: data['authorCreate'])
-      message_hash = Hash.new
-      message_hash[message.id] = message.attributes.deep_transform_keys! { |key| key.camelize(:lower) }
-      message_hash[message.id]["fullName"] = author.full_name
-      socket = { message: message_hash, type: 'message' }
-      ChatChannel.broadcast_to('chat_channel', socket)
+    # comments
+    if data['topCreate']
+      comment = Message.new(
+        content: data['contentCreate'], 
+        author_id: data['authorCreate'],
+        top_id: data['topCreate']
+      )
+      if comment.save
+        author = User.find_by(id: data['authorCreate'])
+        comment_hash = Hash.new
+        comment_hash[comment.id] = comment.attributes.deep_transform_keys! { |key| key.camelize(:lower) }
+        comment_hash[comment.id]["fullName"] = author.full_name
+        socket = { comment: comment_hash, type: 'comment' }
+        ChatChannel.broadcast_to('chat_channel', socket)
+      end
+
+    # top-level messages
+    else
+      message = Message.new(
+        content: data['contentCreate'], 
+        author_id: data['authorCreate']
+      )
+      if message.save
+        author = User.find_by(id: data['authorCreate'])
+        message_hash = Hash.new
+        message_hash[message.id] = message.attributes.deep_transform_keys! { |key| key.camelize(:lower) }
+        message_hash[message.id]["fullName"] = author.full_name
+        socket = { message: message_hash, type: 'message' }
+        ChatChannel.broadcast_to('chat_channel', socket)
+      end
     end
+
+
   end
 
   def load

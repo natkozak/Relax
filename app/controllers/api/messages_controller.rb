@@ -1,43 +1,50 @@
 class Api::MessagesController < ApplicationController
   def index
-    @messages = Message.all
+    @messages = Message.all.where(top_id: nil)
     # @messages = Message.all.includes(:author)
     render :index
   end
 
-  def show
-    @message = Message.find_by(id: params[:id])
-    render :show
+  def comments
+    # @message = Message.find_by(id: params[:top_id])
+    @comments = Message.all.where(top_id: params[:message_id])
+
+    render :comments
   end
 
-  def create
-    @message = Message.new(message_params)
-    if @message.save
-      render :show
-    else # not sure if I need this
-      render json: @message.errors.full_messages, status: 422
-    end
-  end
+  # def show
+  #   @message = Message.find_by(id: params[:id])
+  #   render :show
+  # end
 
-  def update
-    # todo: only allow users to update their own messages
-    @message = Message.find_by(id: params[:id])
-    if @message.update(message_params)
-      render :show
-    else # not sure if I need this
-      render json: @message.errors.full_messages, status: 422
-    end
-  end
+  # def create
+  #   @message = Message.new(message_params)
+  #   if @message.save
+  #     render :show
+  #   else # not sure if I need this
+  #     render json: @message.errors.full_messages, status: 422
+  #   end
+  # end
 
-  def destroy
-    # todo: only allow users to delete their own messages
-    @message = Message.find_by(id: params[:id])
-    @message.destroy
+  # def update
+  #   # todo: only allow users to update their own messages
+  #   @message = Message.find_by(id: params[:id])
+  #   if @message.update(message_params)
+  #     render :show
+  #   else # not sure if I need this
+  #     render json: @message.errors.full_messages, status: 422
+  #   end
+  # end
 
-    render :show
-  end
+  # def destroy
+  #   # todo: only allow users to delete their own messages
+  #   @message = Message.find_by(id: params[:id])
+  #   @message.destroy
 
-  def message_params
-    params.require(:message).permit(:content, :author_id, :channel_id)
-  end
+  #   render :show
+  # end
+
+  # def message_params
+  #   params.require(:message).permit(:content, :author_id, :channel_id)
+  # end
 end

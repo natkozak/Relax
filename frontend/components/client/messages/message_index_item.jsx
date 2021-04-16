@@ -1,5 +1,6 @@
 import React from 'react';
 import EditMessageForm from './edit_message_form'
+import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
 
 class MessageIndexItem extends React.Component {
   constructor(props) {
@@ -7,12 +8,20 @@ class MessageIndexItem extends React.Component {
 
     this.state = {
       editing: false,
-      content: ""
+      content: "",
+      commenting: false
     }
 
     this.dismissEditForm = this.dismissEditForm.bind(this);
     this.authorId = this.props.message.authorId;
     this.renderNameMessage = this.renderNameMessage.bind(this);
+  }
+
+  openComments(){
+    this.props.openComments(this.props.message.id);
+    this.setState({
+      commenting: true
+    })
   }
 
   openEditForm() {
@@ -60,8 +69,6 @@ class MessageIndexItem extends React.Component {
 
     // todo: put this.formatTime() into the render string
 
-    // todo: factor out this.props.fullName into a method call
-
     return (
       <li key={this.props.liKey} className="message-index-item-li">
         {this.state.editing ? <EditMessageForm 
@@ -71,6 +78,7 @@ class MessageIndexItem extends React.Component {
         <div className="message-buttons">
         {editCheck ? <button className="edit-message-button" onClick={this.openEditForm.bind(this)}>Edit</button> : null }
         {deleteCheck ? <button className="delete-message-button" onClick={this.handleDelete.bind(this)}>Delete</button> : null}
+        <Link to={`/client/messages/${this.props.message.id}/comments`} className="comment-message-button" onClick={this.openComments.bind(this)}>Comment</Link>
         </div>
       </li>
     );

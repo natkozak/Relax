@@ -5,6 +5,14 @@ export const fetchMessages = () => (
   })
 );
 
+export const fetchComments = (topId) => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/messages/${topId}/comments`,
+  })
+);
+
+
 export const fetchMessage = messageId => (
   $.ajax({
     method: 'GET',
