@@ -13,7 +13,7 @@ class CreateChannelModal extends React.Component {
   }
 
   render() {
-    console.log("this: ", this);
+    // console.log("this: ", this);
 
     return (
       <div>

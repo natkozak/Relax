@@ -66,9 +66,9 @@ class CommentIndex extends React.Component {
     // console.log("this.props: ", this.props);
     // (this.props.topId) ? this.topId = this.props.topId : this.topId = null;
     // // const commentsIndex = "hi!";
-    console.log("this.topMessage: ", this.topMessage);
+    // console.log("this.topMessage: ", this.topMessage);
 
-    console.log("this.props.comments: ", this.props.comments);
+    // console.log("this.props.comments: ", this.props.comments);
 
     const commentsAll = Object.values(this.props.comments);
     const commentsList = commentsAll.filter((comment) => {return comment.topId === this.props.topId});

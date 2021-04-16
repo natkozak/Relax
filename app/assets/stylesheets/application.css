@@ -314,13 +314,6 @@ i {
   padding: 5px;
 }
 
-/* CHANNELS */
-
-.channel-sidebar {
-  background-color: #611f69;
-  width: 20%;
-}
-
 /* MESSAGES */
 
 .message-index-container {
@@ -397,8 +390,34 @@ i {
   /* background-color: yellow; */
 }
 
+/* CHANNELS */
 
+.channel-sidebar {
+  background-color: #611f69;
+  width: 20%;
+}
 
+.channel-index-item-li {
+  list-style: none;
+}
+
+.channel-item-link {
+  text-decoration: none;
+  color: white;
+  font-style: bold;
+}
+
+.channel-index * {
+  padding: 5px;
+}
+
+.channel-header {
+  display: flex;
+}
+
+.channel-header-channels {
+  color: white;
+}
 
 
 

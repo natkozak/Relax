@@ -32,7 +32,7 @@ class ChannelIndex extends React.Component {
     return (
       <div className="channel-index">
         <div className='channel-header'>
-          <div>Channels</div>
+          <div className="channel-header-channels">Channels</div>
           <button className="create-channel-modal-button" onClick={this.handleSubmit}>+</button>
         </div>
         {channelIndex}
