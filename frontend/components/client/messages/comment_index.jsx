@@ -16,14 +16,14 @@ class CommentIndex extends React.Component {
     // this.props.requestMessage(this.props.topId);
 
     const comments = Object.values(this.props.comments);
-    this.setState({
-      comments: comments
-    });
+    // this.setState({
+    //   comments: comments
+    // });
     // console.log(this.state);
     this.topMessage = this.props.messages[this.props.topId];
-    this.setState({
-      topMessage: this.props.messages[this.props.topId]
-    })
+    // this.setState({
+    //   topMessage: this.props.messages[this.props.topId]
+    // })
 
   }
 
