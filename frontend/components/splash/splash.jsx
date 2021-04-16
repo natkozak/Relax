@@ -12,7 +12,7 @@ class Splash extends React.Component {
       <div className='splash-div'>
         <SplashNav />
         <h1 className='splash-header-text'>Relax makes it <b className='splash-bold'>downright pleasant</b> to work together</h1>
-        <Link to='/createnew' className='splash-try-button'>TRY FOR FREE</Link>
+        <Link to='/signin' className='splash-try-button'>SIGN IN AS A DEMO USER</Link>
       </div>
     );
   }
