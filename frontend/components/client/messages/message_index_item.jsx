@@ -1,5 +1,6 @@
 import React from 'react';
 import EditMessageForm from './edit_message_form'
+import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
 
 class MessageIndexItem extends React.Component {
   constructor(props) {
@@ -7,7 +8,8 @@ class MessageIndexItem extends React.Component {
 
     this.state = {
       editing: false,
-      content: ""
+      content: "",
+      commenting: false
     }
 
     this.dismissEditForm = this.dismissEditForm.bind(this);
@@ -17,6 +19,9 @@ class MessageIndexItem extends React.Component {
 
   openComments(){
     this.props.openComments(this.props.message.id);
+    this.setState({
+      commenting: true
+    })
   }
 
   openEditForm() {
@@ -73,7 +78,7 @@ class MessageIndexItem extends React.Component {
         <div className="message-buttons">
         {editCheck ? <button className="edit-message-button" onClick={this.openEditForm.bind(this)}>Edit</button> : null }
         {deleteCheck ? <button className="delete-message-button" onClick={this.handleDelete.bind(this)}>Delete</button> : null}
-        <button className="comment-message-button" onClick={this.openComments.bind(this)}>Comment</button>
+        <Link to={`/client/messages/${this.props.message.id}/comments`} className="comment-message-button" onClick={this.openComments.bind(this)}>Comment</Link>
         </div>
       </li>
     );

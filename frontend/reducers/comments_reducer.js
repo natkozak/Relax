@@ -1,5 +1,5 @@
 import {
-  RECEIVE_COMMENTS, RECEIVE_COMMENT
+  RECEIVE_COMMENTS, RECEIVE_COMMENT, REMOVE_COMMENT
 } from '../actions/message_actions';
 
 const CommentsReducer = (state = {}, action) => {
@@ -10,6 +10,9 @@ const CommentsReducer = (state = {}, action) => {
       return Object.assign({}, state, action.comments)
     case RECEIVE_COMMENT:
       return Object.assign({}, state, action.comment)
+    case REMOVE_COMMENT:
+      delete newState[action.commentId];
+      return newState;
     default:
       return state;
   }

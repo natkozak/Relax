@@ -6,7 +6,8 @@ class Api::MessagesController < ApplicationController
   end
 
   def comments
-    @comments = Message.all.where(top_id: !nil)
+    # @message = Message.find_by(id: params[:top_id])
+    @comments = Message.all.where(top_id: params[:message_id])
 
     render :comments
   end

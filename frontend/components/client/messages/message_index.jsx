@@ -9,6 +9,7 @@ class MessageIndex extends React.Component {
     this.state = { messages: [], commenting: false };
     this.bottom = React.createRef();
     this.openComments = this.openComments.bind(this);
+    this.closeComments = this.closeComments.bind(this);
   }
 
   componentDidMount() {
@@ -28,8 +29,10 @@ class MessageIndex extends React.Component {
               this.props.receiveMessage(data.message);
               break;
             case "deleteMessage":
-              this.props.removeMessage(data.messageId)
+              this.props.removeMessage(data.messageId);
             break;
+            case "deleteComment":
+              this.props.removeComment(data.commentId);
           }
         },
         create: function (data) { return this.perform("create", data) },
@@ -50,14 +53,25 @@ class MessageIndex extends React.Component {
   }
 
   openComments(topId) {
-    return this.setState({
+    if (this.state.commenting) {
+      this.setState({
+        commenting: false
+      })
+    }
+    this.setState({
       commenting: topId
     })
   }
 
+  closeComments() {
+    return this.setState({
+      commenting: false
+    })
+  }
+
   render() {
-    // console.log("MessageIndex#render#this.state", this.state);
-    // console.log("MessageIndex#render#this.props", this.props);
+    console.log("MessageIndex#render#this.state", this.state);
+    console.log("MessageIndex#render#this.props", this.props);
     const messagesList = Object.values(this.props.messages);
     const messagesIndex = messagesList.map((message) => {
       return (
@@ -81,7 +95,7 @@ class MessageIndex extends React.Component {
         </div>
           
         
-        {(this.state.commenting) ? <CommentIndexContainer topId={this.state.commenting} /> : null}
+        {(this.state.commenting) ? <CommentIndexContainer topId={this.state.commenting} closeComments={this.closeComments} /> : null}
         
       </div>
     );

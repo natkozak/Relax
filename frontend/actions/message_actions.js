@@ -6,6 +6,7 @@ export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
 export const REMOVE_MESSAGE = 'REMOVE_MESSAGE';
+export const REMOVE_COMMENT = 'REMOVE_COMMENT';
 
 
 export const receiveMessages = (messages) => {
@@ -40,6 +41,13 @@ export const removeMessage = (messageId) => {
   return {
     type: REMOVE_MESSAGE,
     messageId
+  }
+}
+
+export const removeComment = (commentId) => {
+  return {
+    type: REMOVE_COMMENT,
+    commentId
   }
 }
 

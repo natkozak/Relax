@@ -387,14 +387,14 @@ i {
 .comment-index-container {
   display: flex;
   flex-direction: column;
-  background-color: blue;
+  /* background-color: blue; */
 }
 
 .comment-index {
   list-style: none;
   overflow-y: scroll;
   width: 100%;
-  background-color: yellow;
+  /* background-color: yellow; */
 }
 
 
