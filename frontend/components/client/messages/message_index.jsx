@@ -95,7 +95,7 @@ class MessageIndex extends React.Component {
         </div>
           
         
-        {(this.state.commenting) ? <CommentIndexContainer topId={this.state.commenting} closeComments={this.closeComments} /> : null}
+        {(this.state.commenting) ? <CommentIndexContainer key={`top-id-${this.state.commenting}`} topId={this.state.commenting} closeComments={this.closeComments} /> : null}
         
       </div>
     );
