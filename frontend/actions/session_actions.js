@@ -23,7 +23,6 @@ export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
 
-// thunk action creator
 export const createNewUser = formUser => dispatch => (
   createUser(formUser)
   .then(user => dispatch(receiveCurrentUser(user)))
