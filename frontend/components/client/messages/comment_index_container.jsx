@@ -1,5 +1,8 @@
 import { connect } from 'react-redux';
-import { requestComments, requestMessage } from '/frontend/actions/message_actions';
+import { 
+  requestComments,
+  requestMessage
+} from '/frontend/actions/message_actions';
 import CommentIndex from './comment_index';
 
 const mapSTP = (state, ownProps) => ({

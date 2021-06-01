@@ -66,17 +66,23 @@ export const requestMessage = (messageId) => dispatch => (
     .then(message => dispatch(receiveMessage(message)))
 );
 
-// export const createMessage = (message) => dispatch => (
-//   MessageAPIUtil.createMessage(message)
-//   .then(message => dispatch(receiveMessage(message)))
-// );
+// todo: try factoring these out
+export const createMessage = (message) => dispatch => (
+  MessageAPIUtil.createMessage(message)
+  .then(message => dispatch(receiveMessage(message)))
+);
 
-// export const updateMessage = (message) => dispatch => (
-//   MessageAPIUtil.updateMessage(message)
-//   .then(message => dispatch(receiveMessage(message)))
-// );
+export const updateMessage = (message) => dispatch => (
+  MessageAPIUtil.updateMessage(message)
+  .then(message => dispatch(receiveMessage(message)))
+);
 
-// export const deleteMessage = (messageId) => dispatch => (
-//   MessageAPIUtil.deleteMessage(messageId)
-//   .then(() => dispatch(removeMessage(messageId)))
-// );
+export const deleteMessage = (messageId) => dispatch => (
+  MessageAPIUtil.deleteMessage(messageId)
+  .then(() => dispatch(removeMessage(messageId)))
+); 
+
+export const deleteComment = (commentId) => dispatch => (
+  MessageAPIUtil.deleteComment(commentId)
+  .then(() => dispatch(removeComment(commentId)))
+);
