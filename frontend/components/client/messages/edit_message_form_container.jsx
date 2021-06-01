@@ -1,6 +1,5 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import { requestMessage, updateMessage } from '/frontend/actions/message_actions';
+import { updateMessage } from '/frontend/actions/message_actions';
 import EditMessageForm from './edit_message_form';
 
 

@@ -53,8 +53,6 @@ class CommentIndexItem extends React.Component {
   }
 
   render() {
-    // console.log("CommentIndexItem#render#this.state", this.state);
-    // console.log("CommentIndexItem#render#this.props", this.props);
     const editCheck = (this.props.currentUser === this.authorId) && (!this.state.editing);
     const deleteCheck = this.props.currentUser === this.authorId;
 

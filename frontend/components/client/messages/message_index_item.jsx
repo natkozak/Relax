@@ -62,8 +62,6 @@ class MessageIndexItem extends React.Component {
   }
 
   render() {
-    // console.log("MessageIndexItem#render#this.state", this.state);
-    // console.log("MessageIndexItem#render#this.props", this.props);
     const editCheck = (this.props.currentUser === this.authorId) && (!this.state.editing);
     const deleteCheck = this.props.currentUser === this.authorId;
 

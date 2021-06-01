@@ -13,7 +13,6 @@ class CommentIndex extends React.Component {
 
   componentDidMount() {
     this.props.requestComments(this.props.topId);
-    // this.props.requestMessage(this.props.topId);
 
     const comments = Object.values(this.props.comments);
     // this.setState({

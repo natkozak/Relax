@@ -14,7 +14,6 @@ class MessageIndex extends React.Component {
 
   componentDidMount() {
     this.props.requestMessages();
-    // console.log("requestMessages: ", this.props.requestMessages());
 
     // if I factor this into a different file, I need to write a function that takes arguments of the actions I want to use. they shouldn't need to be bound.
     App.cable.subscriptions.create(
@@ -41,12 +40,9 @@ class MessageIndex extends React.Component {
         destroy: function (data) { return this.perform("destroy", data) }
       }
     );
-    // console.log("MessageIndex#componentDidMount#this.props: ", this.props)
   }
 
   componentDidUpdate() {
-    // console.log("MessageIndexItem#componentDidUpdate#this.state", this.state);
-    // console.log("MessageIndexItem#componentDidUpdate#this.props", this.props);
     if (this.bottom.current != null) {
       this.bottom.current.scrollIntoView();
     }
@@ -70,8 +66,6 @@ class MessageIndex extends React.Component {
   }
 
   render() {
-    // console.log("MessageIndex#render#this.state", this.state);
-    // console.log("MessageIndex#render#this.props", this.props);
     const messagesList = Object.values(this.props.messages);
     const messagesIndex = messagesList.map((message) => {
       return (
