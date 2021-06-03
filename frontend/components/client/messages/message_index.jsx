@@ -29,9 +29,10 @@ class MessageIndex extends React.Component {
               break;
             case "deleteMessage":
               this.props.removeMessage(data.messageId);
-            break;
+              break;
             case "deleteComment":
               this.props.removeComment(data.commentId);
+              break;
           }
         },
         create: function (data) { return this.perform("create", data) },

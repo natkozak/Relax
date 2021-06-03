@@ -62,9 +62,15 @@ class ChatChannel < ApplicationCable::Channel
   # doesn't need to send up an entire message: just an id.
   # reducer should just take the id and delete the message from the redux state (I'll need to make a regular action creator)
   def destroy(data)
-    message = Message.find_by(id: data['messageId'])
-    message.destroy
-    socket = {messageId: data['messageId'], type: 'deleteMessage'}
+    if data['commentId']
+      comment = Message.find_by(id: data['commentId'])
+      comment.destroy
+      socket = {commentId: data['commentId'], type: 'deleteComment'}
+    else 
+      message = Message.find_by(id: data['messageId'])
+      message.destroy
+      socket = {messageId: data['messageId'], type: 'deleteMessage'}
+    end
     ChatChannel.broadcast_to('chat_channel', socket)
   end
 

@@ -3,7 +3,8 @@ import {
   requestMessages, 
   receiveMessage, 
   removeMessage, 
-  receiveComment 
+  receiveComment,
+  removeComment 
 } from '/frontend/actions/message_actions';
 import MessageIndex from './message_index';
 
@@ -16,7 +17,8 @@ const mapDTP = dispatch => ({
   requestMessages: () => dispatch(requestMessages()),
   receiveMessage: (message) => dispatch(receiveMessage(message)),
   removeMessage: (messageId) => dispatch(removeMessage(messageId)),
-  receiveComment: (comment) => dispatch(receiveComment(comment))
+  receiveComment: (comment) => dispatch(receiveComment(comment)),
+  removeComment: (commentId) => dispatch(removeComment(commentId)),
 });
 
 export default connect(mapSTP, mapDTP)(MessageIndex);

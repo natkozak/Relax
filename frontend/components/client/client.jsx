@@ -4,10 +4,10 @@ import MessageIndexContainer from "./messages/message_index_container"
 import CreateMessageFormContainer from "./messages/create_message_form_container"
 import ChannelSidebar from "./channels/channel_sidebar";
 
-class Client extends React.Component {
+class Client extends React.Component { // todo: does this need to be a class?
   constructor(props) {
     super(props);
-    this.state = { messages: [] };
+    this.state = { messages: [] }; // todo: does this need to be here?
   }
 
   componentDidMount() {

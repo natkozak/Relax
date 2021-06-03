@@ -30,7 +30,7 @@ class CommentIndexItem extends React.Component {
   handleDelete(e) {
     e.preventDefault();
     App.cable.subscriptions.subscriptions[0].destroy({
-      messageId: this.props.comment.id
+      commentId: this.props.comment.id
     });
   }
 
