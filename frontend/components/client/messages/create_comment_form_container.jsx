@@ -8,8 +8,8 @@ const mapSTP = (state) => ({
   // should get the channelId from props at some point
 });
 
-const mapDTP = dispatch => ({
-  submitMessage: message => dispatch(createMessage(message))
-});
+// const mapDTP = dispatch => ({
+//   
+// });
 
-export default connect(mapSTP, mapDTP)(CreateCommentForm);
+export default connect(mapSTP, null)(CreateCommentForm);

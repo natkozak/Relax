@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { createMessage } from '/frontend/actions/message_actions';
 import CreateMessageForm from './create_message_form';
 
 
@@ -8,8 +7,8 @@ const mapSTP = (state) => ({
     // should get the channelId from props at some point
 });
 
-const mapDTP = dispatch => ({
-  submitMessage: message => dispatch(createMessage(message))
-});
+// const mapDTP = dispatch => ({
+//   // do I need createMessage here?
+// });
 
-export default connect(mapSTP, mapDTP)(CreateMessageForm);
+export default connect(mapSTP, null)(CreateMessageForm);

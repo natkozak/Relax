@@ -80,9 +80,4 @@ export const updateMessage = (message) => dispatch => (
 export const deleteMessage = (messageId) => dispatch => (
   MessageAPIUtil.deleteMessage(messageId)
   .then(() => dispatch(removeMessage(messageId)))
-); 
-
-export const deleteComment = (commentId) => dispatch => (
-  MessageAPIUtil.deleteComment(commentId)
-  .then(() => dispatch(removeComment(commentId)))
 );

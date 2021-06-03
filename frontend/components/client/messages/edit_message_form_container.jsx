@@ -5,7 +5,7 @@ import EditMessageForm from './edit_message_form';
 
 
 const mapDTP = dispatch => ({
-  updateMessage: message => dispatch(updateMessage(message))
+  updateMessage: message => dispatch(updateMessage(message)) // todo: edit message form does not need any actions
 });
 
 export default connect(null, mapDTP)(EditMessageForm);

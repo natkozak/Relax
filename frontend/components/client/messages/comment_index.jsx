@@ -15,19 +15,10 @@ class CommentIndex extends React.Component {
     this.props.requestComments(this.props.topId);
 
     const comments = Object.values(this.props.comments);
-    // this.setState({
-    //   comments: comments
-    // });
-    // console.log(this.state);
     this.topMessage = this.props.messages[this.props.topId];
-    // this.setState({
-    //   topMessage: this.props.messages[this.props.topId]
-    // })
-
   }
 
   componentDidUpdate() {
-    // this.topMessage = this.props.messages[this.props.topId];
     if (this.bottom.current != null) {
       this.bottom.current.scrollIntoView();
     }
@@ -61,14 +52,6 @@ class CommentIndex extends React.Component {
 
 
   render() {
-    // console.log("this.state: ", this.state);
-    // console.log("this.props: ", this.props);
-    // (this.props.topId) ? this.topId = this.props.topId : this.topId = null;
-    // // const commentsIndex = "hi!";
-    // console.log("this.topMessage: ", this.topMessage);
-
-    // console.log("this.props.comments: ", this.props.comments);
-
     const commentsAll = Object.values(this.props.comments);
     const commentsList = commentsAll.filter((comment) => {return comment.topId === this.props.topId});
 
