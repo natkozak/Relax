@@ -65,7 +65,7 @@ class CommentIndexItem extends React.Component {
           dismiss={this.dismissEditForm} /> : this.renderNameComment()}
         <div ref={this.props.refForDiv} />
         <div className="change-buttons">
-          {/* {editCheck ? <button className="edit-comment-button" onClick={this.openEditForm.bind(this)}>Edit</button> : null} */}
+          {editCheck ? <button className="edit-comment-button" onClick={this.openEditForm.bind(this)}>Edit</button> : null}
           {deleteCheck ? <button className="delete-comment-button" onClick={this.handleDelete.bind(this)}>Delete</button> : null}
         </div>
       </li>
