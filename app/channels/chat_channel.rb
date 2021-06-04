@@ -59,8 +59,6 @@ class ChatChannel < ApplicationCable::Channel
     end
   end
 
-  # doesn't need to send up an entire message: just an id.
-  # reducer should just take the id and delete the message from the redux state (I'll need to make a regular action creator)
   def destroy(data)
     if data['commentId']
       comment = Message.find_by(id: data['commentId'])
