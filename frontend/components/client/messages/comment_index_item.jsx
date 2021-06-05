@@ -49,7 +49,7 @@ class CommentIndexItem extends React.Component {
 
         <div>{this.props.comment.content}</div>
       </div>
-    )
+    )  
   }
 
   render() {
