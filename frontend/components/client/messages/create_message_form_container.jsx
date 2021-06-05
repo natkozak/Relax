@@ -7,8 +7,4 @@ const mapSTP = (state) => ({
     // should get the channelId from props at some point
 });
 
-// const mapDTP = dispatch => ({
-//   // do I need createMessage here?
-// });
-
 export default connect(mapSTP, null)(CreateMessageForm);
