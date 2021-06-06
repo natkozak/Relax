@@ -1,5 +1,5 @@
 import React from 'react';
-// import EditCommentForm from './edit_comment_form'
+import EditCommentForm from './edit_comment_form'
 
 class CommentIndexItem extends React.Component {
   constructor(props) {
