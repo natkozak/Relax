@@ -44,18 +44,27 @@ class ChatChannel < ApplicationCable::Channel
   ChatChannel.broadcast_to('chat_channel', load_socket)
   end
 
-# refactor edit to be similar to create: only send up one message, of type "message" (maybe factor out types?)
-
   def edit(data)
-    message = Message.find_by(id: data['messageId'])
-    if message.update(content: data['contentUpdate'])
-      author = message.author
-      message_hash = Hash.new
-      message_hash[message.id] = message.attributes.deep_transform_keys! { |key| key.camelize(:lower) }
-      message_hash[message.id]["fullName"] = author.full_name
-      socket = { message: message_hash, type: 'message' }
-
-      ChatChannel.broadcast_to('chat_channel', socket)
+    if data['commentId']
+      comment = Message.find_by(id: data['commentId'])
+      if comment.update(content: data['contentUpdate'])
+        author = comment.author
+        message_hash = Hash.new
+        message_hash[comment.id] = comment.attributes.deep_transform_keys! { |key| key.camelize(:lower) }
+        message_hash[comment.id]["fullName"] = author.full_name
+        socket = { comment: message_hash, type: 'comment' }
+        ChatChannel.broadcast_to('chat_channel', socket)
+      end
+    elsif data['messageId']
+      message = Message.find_by(id: data['messageId'])
+      if message.update(content: data['contentUpdate'])
+        author = message.author
+        message_hash = Hash.new
+        message_hash[message.id] = message.attributes.deep_transform_keys! { |key| key.camelize(:lower) }
+        message_hash[message.id]["fullName"] = author.full_name
+        socket = { message: message_hash, type: 'message' }
+        ChatChannel.broadcast_to('chat_channel', socket)
+      end
     end
   end
 
