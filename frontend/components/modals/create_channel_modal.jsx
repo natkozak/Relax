@@ -18,7 +18,7 @@ class CreateChannelModal extends React.Component {
       <div>
         <div className="modal-child">
           <button className="close-modal-button" onClick={this.handleSubmit}>X</button>
-          {/* <CreateChannelFormContainer /> */}
+          <CreateChannelFormContainer />
           <h1>COMING SOON! :)</h1>
         </div>
         <div className="modal-background"></div>
