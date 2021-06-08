@@ -10,7 +10,8 @@ class ChannelIndexItem extends React.Component {
 
     return (
       <li key={this.props.liKey} className="channel-index-item-li">
-        <Link to={`/client/channels/${this.props.channel.id}`} className="channel-item-link"># {this.props.channel.name}</Link>
+        {/* <Link to={`/client/channels/${this.props.channel.id}`} className="channel-item-link"># {this.props.channel.name}</Link> */}
+        
       </li>
     );
   }
