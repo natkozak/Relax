@@ -19,14 +19,9 @@ class Message < ApplicationRecord
 
 
   after_initialize :ensure_default_channel
-  # after_initialize :ensure_default_user
 
   def ensure_default_channel
     self.channel_id ||= 1
   end
-
-  # def ensure_default_user
-  #   self.author_id ||= 1
-  # end
 
 end

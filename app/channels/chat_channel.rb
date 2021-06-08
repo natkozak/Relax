@@ -1,7 +1,7 @@
 class ChatChannel < ApplicationCable::Channel
   def subscribed
-    # when implementing channels: stream_for instance of class "Channel". Also change this in every broadcast_to in my methods below.
-    stream_for 'chat_channel'
+    @channel = Channel.find_by(id: params[:id])
+    stream_for @channel
   end
 
   def create(data)
@@ -18,7 +18,7 @@ class ChatChannel < ApplicationCable::Channel
         comment_hash[comment.id] = comment.attributes.deep_transform_keys! { |key| key.camelize(:lower) }
         comment_hash[comment.id]["fullName"] = author.full_name
         socket = { comment: comment_hash, type: 'comment' }
-        ChatChannel.broadcast_to('chat_channel', socket)
+        ChatChannel.broadcast_to(@channel, socket)
       end
 
     # top-level messages
@@ -33,15 +33,11 @@ class ChatChannel < ApplicationCable::Channel
         message_hash[message.id] = message.attributes.deep_transform_keys! { |key| key.camelize(:lower) }
         message_hash[message.id]["fullName"] = author.full_name
         socket = { message: message_hash, type: 'message' }
-        ChatChannel.broadcast_to('chat_channel', socket)
+        ChatChannel.broadcast_to(@channel, socket)
       end
     end
 
 
-  end
-
-  def load
-  ChatChannel.broadcast_to('chat_channel', load_socket)
   end
 
   def edit(data)
@@ -53,7 +49,7 @@ class ChatChannel < ApplicationCable::Channel
         message_hash[comment.id] = comment.attributes.deep_transform_keys! { |key| key.camelize(:lower) }
         message_hash[comment.id]["fullName"] = author.full_name
         socket = { comment: message_hash, type: 'comment' }
-        ChatChannel.broadcast_to('chat_channel', socket)
+        ChatChannel.broadcast_to(@channel, socket)
       end
     elsif data['messageId']
       message = Message.find_by(id: data['messageId'])
@@ -63,7 +59,7 @@ class ChatChannel < ApplicationCable::Channel
         message_hash[message.id] = message.attributes.deep_transform_keys! { |key| key.camelize(:lower) }
         message_hash[message.id]["fullName"] = author.full_name
         socket = { message: message_hash, type: 'message' }
-        ChatChannel.broadcast_to('chat_channel', socket)
+        ChatChannel.broadcast_to(@channel, socket)
       end
     end
   end
@@ -78,24 +74,9 @@ class ChatChannel < ApplicationCable::Channel
       message.destroy
       socket = {messageId: data['messageId'], type: 'deleteMessage'}
     end
-    ChatChannel.broadcast_to('chat_channel', socket)
+    ChatChannel.broadcast_to(@channel, socket)
   end
 
   def unsubscribed; end
-
-  private
-  def load_socket
-    m_with_authors = Message.all.includes(:author)
-    authors = m_with_authors.collect(&:author)
-    messages = Message.all
-    messages_hash = Hash.new
-
-    messages.each.with_index do |message, idx|
-      messages_hash[message.id] = message.as_json
-      messages_hash[message.id]["author_name"] = authors[idx].full_name
-    end
-
-    return { messages: messages_hash, type: 'messages' }
-  end
 
 end
