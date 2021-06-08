@@ -16,6 +16,7 @@ class CreateChannelForm extends React.Component {
     e.preventDefault();
     this.props.submitChannel(this.state);
     this.setState({ name: "" });
+    this.props.closeModal();
   }
 
   update(field) {
