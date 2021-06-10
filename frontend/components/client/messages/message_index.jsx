@@ -16,7 +16,7 @@ class MessageIndex extends React.Component {
     this.props.requestMessages();
 
     // if I factor this into a different file, I need to write a function that takes arguments of the actions I want to use. they shouldn't need to be bound.
-    App.cable.subscriptions.create(
+    const sub = App.cable.subscriptions.create(
       { channel: "ChatChannel" },
       {
         received: data => {
@@ -41,6 +41,8 @@ class MessageIndex extends React.Component {
         destroy: function (data) { return this.perform("destroy", data) }
       }
     );
+
+    console.log(sub);
   }
 
   componentDidUpdate() {
