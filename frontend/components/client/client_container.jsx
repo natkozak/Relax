@@ -7,13 +7,17 @@ const mapSTP = state => ({
   //channels go here
   //sidebar stuff goes here
   //searchbar stuff for actually searching goes here
-  messages: state.entities.messages
+  messages: state.entities.messages,
+  currentUser: state.session.id,
 });
 
 const mapDTP = dispatch => ({
-    requestMessage: (messageId) => dispatch(requestMessage(messageId)),
-    requestMessages: () => dispatch(requestMessages()),
-    logout: () => dispatch(logout()),
+  logout: () => dispatch(logout()),
+  requestMessages: () => dispatch(requestMessages()),
+  receiveMessage: (message) => dispatch(receiveMessage(message)),
+  removeMessage: (messageId) => dispatch(removeMessage(messageId)),
+  receiveComment: (comment) => dispatch(receiveComment(comment)),
+  removeComment: (commentId) => dispatch(removeComment(commentId)),
 
 });
 
