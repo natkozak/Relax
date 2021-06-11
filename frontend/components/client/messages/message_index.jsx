@@ -12,6 +12,10 @@ class MessageIndex extends React.Component {
     this.closeComments = this.closeComments.bind(this);
   }
 
+  componentDidMount() {
+    this.props.requestMessages();
+  }
+
   componentDidUpdate() {
     if (this.bottom.current != null) {
       this.bottom.current.scrollIntoView();

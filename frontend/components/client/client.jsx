@@ -9,7 +9,6 @@ class Client extends React.Component { // todo: make func during hooks refactor
   }
 
   componentDidMount() {
-    this.props.requestMessages();
 
     App.cable.subscriptions.create(
       { channel: "ChatChannel" },
