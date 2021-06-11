@@ -6,43 +6,10 @@ import CommentIndexContainer from "./comment_index_container"
 class MessageIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { messages: [], commenting: false };
+    this.state = { commenting: false };
     this.bottom = React.createRef();
     this.openComments = this.openComments.bind(this);
     this.closeComments = this.closeComments.bind(this);
-  }
-
-  componentDidMount() {
-    this.props.requestMessages();
-
-    // if I factor this into a different file, I need to write a function that takes arguments of the actions I want to use. they shouldn't need to be bound.
-    const sub = App.cable.subscriptions.create(
-      { channel: "ChatChannel" },
-      {
-        received: data => {
-          switch (data.type) {
-            case "comment":
-              this.props.receiveComment(data.comment);
-              break;
-            case "message":
-              this.props.receiveMessage(data.message);
-              break;
-            case "deleteMessage":
-              this.props.removeMessage(data.messageId);
-              break;
-            case "deleteComment":
-              this.props.removeComment(data.commentId);
-              break;
-          }
-        },
-        create: function (data) { return this.perform("create", data) },
-        load: function () { return this.perform("load") },
-        edit: function (data) { return this.perform("edit", data) },
-        destroy: function (data) { return this.perform("destroy", data) }
-      }
-    );
-
-    console.log(sub);
   }
 
   componentDidUpdate() {

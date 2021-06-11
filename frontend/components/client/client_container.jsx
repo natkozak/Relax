@@ -1,6 +1,12 @@
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
-import { requestMessage, requestMessages } from '../../actions/message_actions'
+import {
+  requestMessages,
+  receiveMessage,
+  removeMessage,
+  receiveComment,
+  removeComment
+} from '../../actions/message_actions';
 import Client from './client';
 
 const mapSTP = state => ({
