@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import {
-  requestMessages,
   receiveMessage,
   removeMessage,
   receiveComment,
@@ -19,7 +18,6 @@ const mapSTP = state => ({
 
 const mapDTP = dispatch => ({
   logout: () => dispatch(logout()),
-  requestMessages: () => dispatch(requestMessages()),
   receiveMessage: (message) => dispatch(receiveMessage(message)),
   removeMessage: (messageId) => dispatch(removeMessage(messageId)),
   receiveComment: (comment) => dispatch(receiveComment(comment)),
