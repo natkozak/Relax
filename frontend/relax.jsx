@@ -14,8 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
           [id]: currentUser
         }
       },
-      session: { id: window.currentUser.id }
+      session: { id: window.currentUser.id, channel: window.general }
     };
+    // todo: drop newly signed-in users into the general channel via bootstrapping
     store = configureStore(preloadedState);
 
     delete window.currentUser;
