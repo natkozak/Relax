@@ -5,6 +5,14 @@ export const fetchMessages = () => (
   })
 );
 
+// channels refactor: change above to below:
+// export const fetchMessages = (channelId) => (
+//   $.ajax({
+//     method: 'GET',
+//     url: `api/channels/${channelId}/messages`,
+//   })
+// );
+
 export const fetchComments = (topId) => (
   $.ajax({
     method: 'GET',
@@ -12,33 +20,10 @@ export const fetchComments = (topId) => (
   })
 );
 
-
-export const fetchMessage = messageId => (
-  $.ajax({
-    method: 'GET',
-    url: `api/messages/${messageId}`
-  })
-);
-
-export const createMessage = message => (
-  $.ajax({
-    method: 'POST',
-    url: `api/messages/`,
-    data: { message }
-  })
-);
-
-export const updateMessage = (message) => (
-  $.ajax({
-    method: 'PATCH',
-    url: `api/messages/${message.id}`,
-    data: { message }
-  })
-);
-
-export const deleteMessage = (messageId) => (
-  $.ajax({
-    method: 'DELETE',
-    url: `api/messages/${messageId}`
-  })
-);
+// channels refactor: change above to below:
+// export const fetchComments = (topId) => (
+//   $.ajax({
+//     method: 'GET',
+//     url: `api/channels/${channelId}/messages/${topId}/comments`,
+//   })
+// );

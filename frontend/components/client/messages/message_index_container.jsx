@@ -6,6 +6,7 @@ import {
 const mapSTP = state => ({
   messages: state.entities.messages,
   currentUser: state.session.id,
+  generalChannel: state.session.generalChannel
 });
 
 const mapDTP = dispatch => ({

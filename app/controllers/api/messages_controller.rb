@@ -1,6 +1,7 @@
 class Api::MessagesController < ApplicationController
   def index
     @messages = Message.all.where(top_id: nil)
+    # @messages = Message.all.where(top_id: nil, channel_id: params[:channel_id])
     render :index
   end
 
@@ -42,7 +43,7 @@ class Api::MessagesController < ApplicationController
   #   render :show
   # end
 
-  # def message_params
-  #   params.require(:message).permit(:content, :author_id, :channel_id)
-  # end
+  def message_params
+    params.require(:message).permit(:content, :author_id, :channel_id)
+  end
 end

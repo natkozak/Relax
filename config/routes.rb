@@ -7,7 +7,12 @@ Rails.application.routes.draw do
     resources :messages, only: [:show] do
       get :comments
     end
-    resources :channels, only: [:index, :show, :create, :update, :destroy]
+    resources :channels, only: [:index, :show, :create, :update, :destroy] do
+      # resources :messages, only: [:index]
+      # resources :messages, only: [:show] do
+      #   get :comments
+      # end
+    end
   end
 
 
