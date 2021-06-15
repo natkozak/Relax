@@ -61,7 +61,7 @@ export const requestMessages = () => dispatch => (
   .then(messages => dispatch(receiveMessages(messages)))
 );
 
-export const requestMessage = (messageId) => dispatch => (
-  MessageAPIUtil.fetchMessage(messageId)
-    .then(message => dispatch(receiveMessage(message)))
-);
+// export const requestMessage = (messageId) => dispatch => (
+//   MessageAPIUtil.fetchMessage(messageId)
+//     .then(message => dispatch(receiveMessage(message)))
+// );
