@@ -13,8 +13,8 @@ class MessageIndex extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.requestMessages({channelId: this.props.generalChannel});
-    this.props.requestMessages();
+    debugger;
+    this.props.requestMessages(this.props.generalChannel); 
   }
 
   componentDidUpdate() {

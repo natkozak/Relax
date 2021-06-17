@@ -10,7 +10,7 @@ const mapSTP = state => ({
 });
 
 const mapDTP = dispatch => ({
-  requestMessages: () => dispatch(requestMessages())
+  requestMessages: (channelId) => dispatch(requestMessages(channelId))
 });
 
 export default connect(mapSTP, mapDTP)(MessageIndex);

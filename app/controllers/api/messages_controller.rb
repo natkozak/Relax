@@ -1,7 +1,7 @@
 class Api::MessagesController < ApplicationController
   def index
-    @messages = Message.all.where(top_id: nil)
-    # @messages = Message.all.where(top_id: nil, channel_id: params[:channel_id])
+    @messages = Message.all.where(top_id: nil, channel_id: params[:channel_id]) 
+    puts @messages
     render :index
   end
 

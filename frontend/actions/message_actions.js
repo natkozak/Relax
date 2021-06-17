@@ -51,18 +51,13 @@ export const removeComment = (commentId) => {
   }
 }
 
-export const requestComments = (topId) => dispatch => (
+export const requestComments = (channelId, topId) => dispatch => (
   MessageAPIUtil.fetchComments(topId)
     .then(comments => dispatch(receiveComments(comments)))
 );
 
-export const requestMessages = () => dispatch => (
-  MessageAPIUtil.fetchMessages()
-  .then(messages => dispatch(receiveMessages(messages)))
-);
-
-// export const requestMessages = (channelId) => dispatch => (
-//   MessageAPIUtil.fetchMessages(channelId)
-//     .then(messages => dispatch(receiveMessages(messages)))
-// );
+export const requestMessages = (channelId) => dispatch => (
+  MessageAPIUtil.fetchMessages(channelId)
+    .then(messages => dispatch(receiveMessages(messages)))
+); 
 

@@ -12,7 +12,7 @@ class CommentIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.requestComments(this.props.topId);
+    this.props.requestComments(1, this.props.topId); // add channel_id variable
 
     const comments = Object.values(this.props.comments);
     this.topMessage = this.props.messages[this.props.topId];

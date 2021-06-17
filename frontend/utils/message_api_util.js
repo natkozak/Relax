@@ -1,29 +1,14 @@
-export const fetchMessages = () => (
+
+export const fetchMessages = (channelId) => (
   $.ajax({
     method: 'GET',
-    url: 'api/messages',
+    url: `api/channels/${channelId}/messages`,
   })
-);
+); 
 
-// channels refactor: change above to below:
-// export const fetchMessages = (channelId) => (
-//   $.ajax({
-//     method: 'GET',
-//     url: `api/channels/${channelId}/messages`,
-//   })
-// );
-
-export const fetchComments = (topId) => (
+export const fetchComments = (channelId, topId) => (
   $.ajax({
     method: 'GET',
-    url: `/api/messages/${topId}/comments`,
+    url: `api/channels/${channelId}/messages/${topId}/comments`,
   })
 );
-
-// channels refactor: change above to below:
-// export const fetchComments = (topId) => (
-//   $.ajax({
-//     method: 'GET',
-//     url: `api/channels/${channelId}/messages/${topId}/comments`,
-//   })
-// );
