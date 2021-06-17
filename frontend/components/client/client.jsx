@@ -6,6 +6,9 @@ import ChannelSidebar from "./channels/channel_sidebar";
 class Client extends React.Component { // todo: make func during hooks refactor
   constructor(props) {
     super(props);
+
+    this.state = {channelId: 1};
+    // this.openMessages = this.openMessages.bind(this);
   }
 
   componentDidMount() {
@@ -37,13 +40,21 @@ class Client extends React.Component { // todo: make func during hooks refactor
     );
   }
 
+  // openMessages(channelId) {
+  //   this.setState({channelId})
+  // }
+
   render() {
     return (
       <div className="client-div">
         <SearchBarContainer />
         <div className="client-channels-messages">
-          <ChannelSidebar />
-          <MessageIndexContainer />
+          <ChannelSidebar 
+          // openMessages={this.props.openMessages}
+          />
+          <MessageIndexContainer 
+          channelId={this.state.channel}
+          />
         </div>
       </div>
         

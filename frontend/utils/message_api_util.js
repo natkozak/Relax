@@ -6,6 +6,13 @@ export const fetchMessages = (channelId) => (
   })
 ); 
 
+export const fetchMessage = (channelId, messageId) => (
+  $.ajax({
+    method: 'GET',
+    url: `api/channels/${channelId}/messages/${messageId}`
+  })
+);
+
 export const fetchComments = (channelId, topId) => (
   $.ajax({
     method: 'GET',

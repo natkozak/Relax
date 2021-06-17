@@ -11,6 +11,7 @@ const mapSTP = (state) => ({
 const mapDTP = dispatch => ({
   requestChannels: () => dispatch(requestChannels()),
   openModal: (component) => dispatch(openModal(component))
+  // openMessages: (channel) => dispatch(receiveCurrentChannel(channel))
 });
 
 export default connect(mapSTP, mapDTP)(ChannelIndex);

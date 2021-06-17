@@ -4,7 +4,9 @@ import ChannelIndexContainer from './channel_index_container';
 const ChannelSidebar = () => {
   return (
     <div className="channel-sidebar">
-      <ChannelIndexContainer />
+      <ChannelIndexContainer 
+        // openMessages={this.props.openMessages}
+      />
     </div>
   );
 }

@@ -6,6 +6,7 @@ class ChannelIndex extends React.Component {
     super(props);
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    
   }
 
   componentDidMount() {
@@ -26,6 +27,7 @@ class ChannelIndex extends React.Component {
           key={channel.id}
           channel={channel}
           liKey={`li${channel.id}`}
+          // openMessages={this.props.openMessages}
         />
       );
     })

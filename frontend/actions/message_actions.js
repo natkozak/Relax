@@ -61,3 +61,8 @@ export const requestMessages = (channelId) => dispatch => (
     .then(messages => dispatch(receiveMessages(messages)))
 ); 
 
+export const requestMessage = (channelId, messageId) => dispatch => (
+  MessageAPIUtil.fetchMessage(messageId)
+    .then(message => dispatch(receiveMessage(message)))
+);
+
