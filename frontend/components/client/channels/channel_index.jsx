@@ -27,7 +27,7 @@ class ChannelIndex extends React.Component {
           key={channel.id}
           channel={channel}
           liKey={`li${channel.id}`}
-          // openMessages={this.props.openMessages}
+          openMessages={this.props.openMessages}
         />
       );
     })

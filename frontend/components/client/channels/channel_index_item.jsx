@@ -4,7 +4,11 @@ class ChannelIndexItem extends React.Component {
   constructor(props) {
     super(props);
 
-    
+    this.sendMessages = this.sendMessages.bind(this);
+  }
+
+  sendMessages(){
+    this.props.openMessages(this.props.channel.id);
   }
 
 
@@ -13,7 +17,7 @@ class ChannelIndexItem extends React.Component {
 
     return (
       <li key={this.props.liKey} className="channel-index-item-li">
-        <button onClick={() => this.props.openMessages(this.props.key)} className="channel-item-link"># {this.props.channel.name}</button>
+        <button onClick={this.sendMessages} className="channel-item-link"># {this.props.channel.name}</button>
         
       </li>
     );

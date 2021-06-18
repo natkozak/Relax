@@ -9,9 +9,6 @@ import {
 import Client from './client';
 
 const mapSTP = state => ({
-  //channels go here
-  //sidebar stuff goes here
-  //searchbar stuff for actually searching goes here
   messages: state.entities.messages,
   currentUser: state.session.id,
 });

@@ -1,14 +1,14 @@
 import React from "react";
 import SearchBarContainer from "./search_bar/search_bar_container";
 import MessageIndexContainer from "./messages/message_index_container"
-import ChannelSidebar from "./channels/channel_sidebar";
+import ChannelIndexContainer from './channels/channel_index_container'; 
 
 class Client extends React.Component { // todo: make func during hooks refactor
   constructor(props) {
     super(props);
 
     this.state = {channelId: 1};
-    // this.openMessages = this.openMessages.bind(this);
+    this.openMessages = this.openMessages.bind(this);
   }
 
   componentDidMount() {
@@ -40,18 +40,20 @@ class Client extends React.Component { // todo: make func during hooks refactor
     );
   }
 
-  // openMessages(channelId) {
-  //   this.setState({channelId})
-  // }
+  openMessages(channelId) {
+    this.setState({channelId})
+  }
 
   render() {
     return (
       <div className="client-div">
         <SearchBarContainer />
         <div className="client-channels-messages">
-          <ChannelSidebar 
-          // openMessages={this.props.openMessages}
-          />
+          <div className="channel-sidebar">
+            <ChannelIndexContainer
+              openMessages={this.openMessages}
+            />
+          </div>
           <MessageIndexContainer 
           channelId={this.state.channel}
           />
