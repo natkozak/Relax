@@ -42,6 +42,8 @@ class Client extends React.Component { // todo: make func during hooks refactor
 
   openMessages(channelId) {
     this.setState({channelId})
+    console.log(this.state.channelId);
+    this.props.receiveCurrentChannel(this.state.channelId);
   }
 
   render() {
@@ -52,10 +54,11 @@ class Client extends React.Component { // todo: make func during hooks refactor
           <div className="channel-sidebar">
             <ChannelIndexContainer
               openMessages={this.openMessages}
+              
             />
           </div>
           <MessageIndexContainer 
-          channelId={this.state.channel}
+          // currentChannel={this.state.channelId}
           />
         </div>
       </div>

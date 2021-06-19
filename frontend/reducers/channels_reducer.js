@@ -1,7 +1,8 @@
 import {
   RECEIVE_CHANNELS,
   RECEIVE_CHANNEL,
-  REMOVE_CHANNEL
+  REMOVE_CHANNEL,
+  RECEIVE_CURRENT_CHANNEL
 } from '../actions/channel_actions';
 
 const ChannelsReducer = (state = {}, action) => {
@@ -15,6 +16,8 @@ const ChannelsReducer = (state = {}, action) => {
     case REMOVE_CHANNEL:
       delete newState[action.channelId]
       return newState;
+    case RECEIVE_CURRENT_CHANNEL:
+      return Object.assign({}, state, {currentChannel: action.channel})
     default:
       return state;
   }

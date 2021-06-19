@@ -9,7 +9,7 @@ class SplashNav extends React.Component {
   render() {
     return (
       <div className="splash-nav-div">
-        <Link className="logo-header" to='/'><i class="far fa-sun"></i><b>Relax</b></Link>
+        <Link className="logo-header" to='/'><i className="far fa-sun"></i><b>Relax</b></Link>
         <a className="header-link" href="https://github.com/natkozak/Relax">Project</a>
         <a className="header-link" href="https://github.com/natkozak">Github</a>
         <a className="header-link" href="https://www.linkedin.com/in/nat-kozak-23179049/">LinkedIn</a>

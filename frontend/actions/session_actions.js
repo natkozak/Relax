@@ -1,8 +1,6 @@
 import { createUser, deleteSession, createSession } from '../utils/session_util';
-import { fetchChannel } from '../utils/channel_api_util';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
-export const RECEIVE_CURRENT_CHANNEL = 'RECEIVE_CURRENT_CHANNEL';
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS'; 
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
@@ -25,10 +23,6 @@ export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
 
-// export const receiveCurrentChannel = channel => ({
-//   type: RECEIVE_CURRENT_CHANNEL,
-//   channel
-// });
 
 export const createNewUser = formUser => dispatch => (
   createUser(formUser)
@@ -47,7 +41,3 @@ export const logout = () => dispatch => (
   .then(() => dispatch(logoutCurrentUser()))
 );
 
-export const requestCurrentChannel = (channelId) => dispatch => (
-  fetchChannel(channelId)
-    .then(channel => dispatch(receiveCurrentChannel(channel)))
-);
