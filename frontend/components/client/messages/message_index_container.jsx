@@ -3,15 +3,19 @@ import MessageIndex from './message_index';
 import {
   requestMessages,
 } from '../../../actions/message_actions';
-const mapSTP = state => ({
+import { withRouter } from 'react-router-dom';
+
+const mapSTP = (state, ownProps) => ({
   messages: state.entities.messages,
   currentUser: state.session.id,
   generalChannel: state.session.generalChannel,
-  currentChannel: state.entities.channels.currentChannel
+  currentChannel: state.entities.channels.currentChannel,
+  hi: ownProps
 });
 
 const mapDTP = dispatch => ({
   requestMessages: (channelId) => dispatch(requestMessages(channelId))
 });
 
-export default connect(mapSTP, mapDTP)(MessageIndex);
+export default withRouter(connect(mapSTP, mapDTP)(MessageIndex)); // needed for ownProps
+// export default connect(mapSTP, mapDTP)(MessageIndex);

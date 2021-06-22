@@ -42,7 +42,7 @@ class Client extends React.Component { // todo: make func during hooks refactor
 
   openMessages(channelId) {
     this.setState({channelId})
-    console.log(this.state.channelId);
+    // console.log(this.state.channelId);
     this.props.receiveCurrentChannel(this.state.channelId);
   }
 

@@ -13,15 +13,14 @@ class MessageIndex extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.requestMessages(1);
-    console.log("this.props.currentChannel in message index", this.props.currentChannel)
+    // console.log("this.props.currentChannel in message index", this.props.currentChannel)
     let channel;
 
     this.props.currentChannel ? channel = this.props.currentChannel : channel = 1;
 
     this.props.requestMessages(channel);
     
-      
+    console.log("hi", this.props.hi);
   }
 
   componentDidUpdate() {
@@ -29,7 +28,7 @@ class MessageIndex extends React.Component {
       this.bottom.current.scrollIntoView();
     }
     
-    console.log("currentChannel", this.props.currentChannel);
+    // console.log("currentChannel", this.props.currentChannel);
   }
 
   openComments(topId) {

@@ -18,6 +18,8 @@ const App = () => (
       <AuthRoute exact path='/signin' component={SigninContainer} />
       <AuthRoute exact path="/createnew" component={SignupContainer} />
       <ProtectedRoute path="/client" component={ClientContainer} />
+      {/* <ProtectedRoute path="/client/channels/1/messages" component={ClientContainer} /> */}
+      {/* <ProtectedRoute path="/client/channels/:channelId/messages" component={ClientContainer} /> */}
       <Redirect to='/' />
     </Switch>
   </div>

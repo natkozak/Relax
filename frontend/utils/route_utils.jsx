@@ -25,5 +25,21 @@ const Protected = ({ loggedIn, path, component: Component }) => (
   />
 );
 
+const Channels = ({ loggedIn, path, component: Component }) => {
+  const components = props => {
+    if (loggedIn) {
+      <Component {...props} />
+    } else {
+      <Redirect to="/client" />
+    }
+  }
+
+  return <Route
+    path={path}
+    render={components}
+  />
+};
+
 export const AuthRoute = withRouter(connect(mapSTP)(Auth));
 export const ProtectedRoute = withRouter(connect(mapSTP)(Protected));
+export const ChannelsRoute = withRouter(connect(mapSTP)(Channels));
