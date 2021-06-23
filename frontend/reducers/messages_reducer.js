@@ -16,6 +16,8 @@ const MessagesReducer = (state = {}, action) => {
     case REMOVE_MESSAGE:
       delete newState[action.messageId];
       return newState;
+    // case REMOVE_MESSAGES_FROM_CHANNEL:
+    //   return newState;
     default:
       return state;
   }

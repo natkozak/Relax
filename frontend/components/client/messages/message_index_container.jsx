@@ -10,11 +10,13 @@ const mapSTP = (state, ownProps) => ({
   currentUser: state.session.id,
   generalChannel: state.session.generalChannel,
   currentChannel: state.entities.channels.currentChannel,
-  hi: ownProps
+  hi: ownProps,
+  currentChannelFromPath: ownProps.location.pathname.split("/")[3]
 });
 
 const mapDTP = dispatch => ({
-  requestMessages: (channelId) => dispatch(requestMessages(channelId))
+  requestMessages: (channelId) => dispatch(requestMessages(channelId)),
+  // removeMessages: ()
 });
 
 export default withRouter(connect(mapSTP, mapDTP)(MessageIndex)); // needed for ownProps

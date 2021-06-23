@@ -10,6 +10,7 @@ class ChatChannel < ApplicationCable::Channel
       comment = Message.new(
         content: data['contentCreate'], 
         author_id: data['authorCreate'],
+        channel_id: data['channelCreate'],
         top_id: data['topCreate']
       )
       if comment.save
@@ -24,7 +25,8 @@ class ChatChannel < ApplicationCable::Channel
     else
       message = Message.new(
         content: data['contentCreate'], 
-        author_id: data['authorCreate']
+        author_id: data['authorCreate'],
+        channel_id: data['channelCreate']
       )
       if message.save
         author = User.find_by(id: data['authorCreate'])

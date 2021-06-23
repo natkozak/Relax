@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Switch } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../utils/route_utils';
 import SplashContainer from './splash/splash_container'
 import ClientContainer from './client/client_container';
@@ -18,6 +18,8 @@ const App = () => (
       <AuthRoute exact path='/signin' component={SigninContainer} />
       <AuthRoute exact path="/createnew" component={SignupContainer} />
       <ProtectedRoute path="/client" component={ClientContainer} />
+
+      {/* doesn't appear to work -- gives a cryptic lifecycle error */}
       {/* <ProtectedRoute path="/client/channels/1/messages" component={ClientContainer} /> */}
       {/* <ProtectedRoute path="/client/channels/:channelId/messages" component={ClientContainer} /> */}
       <Redirect to='/' />

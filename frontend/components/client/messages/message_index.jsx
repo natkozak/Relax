@@ -10,25 +10,30 @@ class MessageIndex extends React.Component {
     this.bottom = React.createRef();
     this.openComments = this.openComments.bind(this);
     this.closeComments = this.closeComments.bind(this);
+    this.getChannel = this.getChannel.bind(this);
   }
 
   componentDidMount() {
-    // console.log("this.props.currentChannel in message index", this.props.currentChannel)
-    let channel;
-
-    this.props.currentChannel ? channel = this.props.currentChannel : channel = 1;
-
-    this.props.requestMessages(channel);
     
-    console.log("hi", this.props.hi);
+    this.props.requestMessages(this.getChannel());
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     if (this.bottom.current != null) {
       this.bottom.current.scrollIntoView();
     }
-    
-    // console.log("currentChannel", this.props.currentChannel);
+
+    if (prevProps.currentChannelFromPath !== this.props.currentChannelFromPath) {
+      this.props.requestMessages(this.getChannel());
+    }
+  }
+
+  componentWillUnmount(){
+
+  }
+
+  getChannel() {
+    return parseInt(this.props.currentChannelFromPath) || 1;
   }
 
   openComments(topId) {
@@ -48,8 +53,19 @@ class MessageIndex extends React.Component {
     })
   }
 
+  testMessages(){
+    let values;
+    console.log("this.props.messages", this.props.messages);
+    values = Object.values(this.props.messages);
+    console.log("object values", values);
+    console.log("values[1].channelId");
+
+  }
+
   render() {
-    const messagesList = Object.values(this.props.messages);
+    
+    this.testMessages();
+    const messagesList = Object.values(this.props.messages).filter((message) => message.channelId === this.getChannel());
     const messagesIndex = messagesList.map((message) => {
       return (
         <MessageIndexItem
@@ -59,16 +75,22 @@ class MessageIndex extends React.Component {
           liKey={`li${message.id}`}
           refForDiv={this.bottom}
           currentUser={this.props.currentUser}
+          channelId={this.getChannel()}
         />
       );
     })
+
+    this.props.hi && console.log("hi", this.props.hi);
+    this.props.currentChannelFromPath && console.log("currentChannelFromPath", this.props.currentChannelFromPath);
 
     return (
       <div className="message-index-container">
         <div className="message-index-and-create">
           <div className="message-index">{messagesIndex}</div>
 
-          <CreateMessageFormContainer />
+          <CreateMessageFormContainer
+          channelId={this.getChannel()}
+          />
         </div>
           
         

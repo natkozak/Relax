@@ -11,8 +11,8 @@ class CreateMessageForm extends React.Component {
     e.preventDefault();
     App.cable.subscriptions.subscriptions[0].create({ 
       contentCreate: this.state.content,
-      authorCreate: this.props.authorId
-      // refactor to include channelId later
+      authorCreate: this.props.authorId,
+      channelCreate: this.props.channelId
     });
     this.setState({ content: "" });
   }
