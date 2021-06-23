@@ -6,9 +6,10 @@ export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
 export const REMOVE_MESSAGE = 'REMOVE_MESSAGE';
+export const REMOVE_MESSAGES_FROM_CHANNEL = 'REMOVE_MESSAGES_FROM_CHANNEL';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
 
-
+// todo: move comment actions into their own file
 export const receiveMessages = (messages) => {
   return {
     type: RECEIVE_MESSAGES,
@@ -41,6 +42,13 @@ export const removeMessage = (messageId) => {
   return {
     type: REMOVE_MESSAGE,
     messageId
+  }
+}
+
+export const removeMessagesFromChannel = (channelId) => {
+  return {
+    type: REMOVE_MESSAGES_FROM_CHANNEL,
+    channelId
   }
 }
 

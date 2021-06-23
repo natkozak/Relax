@@ -1,8 +1,8 @@
 import {
   RECEIVE_MESSAGES,
-  RECEIVE_COMMENTS,
   RECEIVE_MESSAGE,
-  REMOVE_MESSAGE
+  REMOVE_MESSAGE,
+  REMOVE_MESSAGES_FROM_CHANNEL
 } from '../actions/message_actions';
 
 const MessagesReducer = (state = {}, action) => {
@@ -16,8 +16,10 @@ const MessagesReducer = (state = {}, action) => {
     case REMOVE_MESSAGE:
       delete newState[action.messageId];
       return newState;
-    // case REMOVE_MESSAGES_FROM_CHANNEL:
-    //   return newState;
+    case REMOVE_MESSAGES_FROM_CHANNEL:
+      // todo: finish (traverse messages in state; delete channelId matches)
+      delete newState[action.channelId];
+      return newState;
     default:
       return state;
   }

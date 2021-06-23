@@ -53,18 +53,9 @@ class MessageIndex extends React.Component {
     })
   }
 
-  testMessages(){
-    let values;
-    console.log("this.props.messages", this.props.messages);
-    values = Object.values(this.props.messages);
-    console.log("object values", values);
-    console.log("values[1].channelId");
-
-  }
-
   render() {
-    
-    this.testMessages();
+    const channelId = this.getChannel();
+
     const messagesList = Object.values(this.props.messages).filter((message) => message.channelId === this.getChannel());
     const messagesIndex = messagesList.map((message) => {
       return (
@@ -75,21 +66,21 @@ class MessageIndex extends React.Component {
           liKey={`li${message.id}`}
           refForDiv={this.bottom}
           currentUser={this.props.currentUser}
-          channelId={this.getChannel()}
+          channelId={channelId}
         />
       );
     })
 
-    this.props.hi && console.log("hi", this.props.hi);
-    this.props.currentChannelFromPath && console.log("currentChannelFromPath", this.props.currentChannelFromPath);
-
     return (
       <div className="message-index-container">
         <div className="message-index-and-create">
+          <div className="message-index-channel-name">
+            #{(this.props.channels[channelId]) ? this.props.channels[channelId].name : null}
+          </div>
           <div className="message-index">{messagesIndex}</div>
 
           <CreateMessageFormContainer
-          channelId={this.getChannel()}
+          channelId={channelId}
           />
         </div>
           
