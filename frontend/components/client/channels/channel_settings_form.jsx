@@ -3,12 +3,12 @@ import React from 'react';
 class ChannelSettingsForm extends React.Component {
   constructor(props) {
     super(props);
-
   }
-  render() {
 
+  render() {
     return (
       <div>
+        Settings
       </div>
     );
   }

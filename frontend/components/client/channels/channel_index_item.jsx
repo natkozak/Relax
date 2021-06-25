@@ -12,8 +12,6 @@ class ChannelIndexItem extends React.Component {
     this.props.openMessages(this.props.channel.id);
   }
 
-
-
   render() {
 
     return (
@@ -24,8 +22,6 @@ class ChannelIndexItem extends React.Component {
         to={`/client/channels/${this.props.channel.id}/messages`} 
         className="channel-item-link"># {this.props.channel.name}
         </Link>
-
-        
       </li>
     );
   }

@@ -1,15 +1,16 @@
 import React from 'react';
-import CreateChannelFormContainer from '/frontend/components/client/channels/create_channel_form_container.jsx';
+import ChannelAboutForm from '/frontend/components/client/channels/channel_about_form.jsx';
+import ChannelSettingsForm from '/frontend/components/client/channels/channel_settings_form.jsx';
 import { connect } from "react-redux";
 import { closeModal } from "/frontend/actions/modal_actions";
 
-class CreateChannel extends React.Component {
+class ChannelModal extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(e){
+  handleSubmit(e) {
     e.preventDefault;
     this.props.closeModal();
   }
@@ -20,7 +21,8 @@ class CreateChannel extends React.Component {
       <div>
         <div className="modal-child">
           <button className="close-modal-button" onClick={this.handleSubmit}>X</button>
-          <CreateChannelFormContainer closeModal={this.props.closeModal}/>
+          <ChannelAboutForm closeModal={this.props.closeModal} />
+          <ChannelSettingsForm closeModal={this.props.closeModal} />
         </div>
         <div className="modal-background"></div>
       </div>
@@ -33,4 +35,4 @@ const mapDTP = (dispatch) => ({
 })
 
 
-export default connect(null, mapDTP)(CreateChannel);
+export default connect(null, mapDTP)(ChannelModal);

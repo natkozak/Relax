@@ -3,12 +3,12 @@ import React from 'react';
 class ChannelAboutForm extends React.Component {
   constructor(props) {
     super(props);
-
   }
-  render() {
 
+  render() {
     return (
       <div>
+        About
       </div>
     );
   }

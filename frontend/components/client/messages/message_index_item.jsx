@@ -1,6 +1,6 @@
 import React from 'react';
 import EditMessageForm from './edit_message_form'
-import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class MessageIndexItem extends React.Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import React from 'react';
-import CreateChannelModalContainer from './create_channel_modal_container';
-import CreateChannelFormContainer from '/frontend/components/client/channels/create_channel_form_container.jsx';
+import CreateChannelModalContainer from './create_channel_modal';
+import ChannelModalContainer from './channel_modal';
 
 class Modals extends React.Component {
   constructor(props) {
@@ -11,8 +11,10 @@ class Modals extends React.Component {
 
   renderModal(){
     switch (this.props.modal) {
-      case "CreateChannelFormContainer":
-        return <CreateChannelModalContainer />
+      case "CreateChannel":
+        return <CreateChannelModalContainer/>
+      case "ChannelModal":
+        return <ChannelModalContainer />
       default:
         return null;
     }

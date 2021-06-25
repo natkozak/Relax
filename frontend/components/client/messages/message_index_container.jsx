@@ -4,6 +4,7 @@ import {
   requestMessages,
 } from '../../../actions/message_actions';
 import { withRouter } from 'react-router-dom';
+import { openModal } from '/frontend/actions/modal_actions';
 
 const mapSTP = (state, ownProps) => ({
   messages: state.entities.messages,
@@ -15,6 +16,7 @@ const mapSTP = (state, ownProps) => ({
 
 const mapDTP = dispatch => ({
   requestMessages: (channelId) => dispatch(requestMessages(channelId)),
+  openModal: (component) => dispatch(openModal(component))
   // removeMessages: (channelId) => dispatch(removeMessages(channelId)) // todo: implement to avoid leaks
 });
 

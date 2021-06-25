@@ -15,7 +15,7 @@ class ChannelIndex extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.openModal("CreateChannelFormContainer");
+    this.props.openModal("CreateChannel");
   }
 
   render() {
