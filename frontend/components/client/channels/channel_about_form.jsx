@@ -1,17 +1,56 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { updateChannel } from '/frontend/actions/channel_actions';
 
 class ChannelAboutForm extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = ({ description: "" });
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.updateChannel(this.state);
+    this.setState({ description: "" });
+    this.props.closeModal();
+  }
+
+  update(field) {
+    return e => this.setState({ [field]: e.currentTarget.value });
   }
 
   render() {
     return (
       <div>
-        About
+        <form onSubmit={this.handleSubmit} className="channel-about-form">
+          <label>Description
+            <input className="channel-about-description-input"
+              type='text'
+              value={this.state.description}
+              onChange={this.update('description')}
+            />
+          </label>
+
+          <button type='submit' className="channel-about-submit-button">Edit</button>
+        </form>
+
       </div>
     );
   }
 }
 
-export default ChannelAboutForm;
+
+
+const mapSTP = (state, ownProps) => ({
+  authorId: state.session.id,
+  currentChannel: ownProps.location.pathname.split("/")[3]
+});
+
+const mapDTP = dispatch => ({
+  updateChannel: channelId => dispatch(updateChannel(channelId)) // this component needs the channelId somehow, right?
+});
+
+export default withRouter(connect(mapSTP, mapDTP)(ChannelAboutForm));

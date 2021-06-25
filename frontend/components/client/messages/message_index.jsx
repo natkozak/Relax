@@ -2,7 +2,6 @@ import React from 'react';
 import MessageIndexItem from './message_index_item';
 import CreateMessageFormContainer from "./create_message_form_container"
 import CommentIndexContainer from "./comment_index_container"
-import { Link } from 'react-router-dom';
 
 class MessageIndex extends React.Component {
   constructor(props) {
@@ -16,7 +15,6 @@ class MessageIndex extends React.Component {
   }
 
   componentDidMount() {
-    
     this.props.requestMessages(this.getChannel());
   }
 
@@ -28,10 +26,6 @@ class MessageIndex extends React.Component {
     if (prevProps.currentChannelFromPath !== this.props.currentChannelFromPath) {
       this.props.requestMessages(this.getChannel());
     }
-  }
-
-  componentWillUnmount(){
-
   }
 
   getChannel() {
@@ -62,6 +56,8 @@ class MessageIndex extends React.Component {
 
   render() {
     const channelId = this.getChannel();
+    const channelProp = this.props.channels[channelId];
+
 
     console.log("current channel", this.props.currentChannelFromPath)
 
@@ -84,7 +80,12 @@ class MessageIndex extends React.Component {
       <div className="message-index-container">
         <div className="message-index-and-create">
           <div className="message-index-channel-name">
-            <button onClick={this.openChannelModal}>#{(this.props.channels[channelId]) ? this.props.channels[channelId].name : null}</button>
+            <button onClick={this.openChannelModal}> 
+            #{(channelProp) ? channelProp.name : null}
+            </button>
+          </div>
+          <div className="message-index-channel-description">
+            {(channelProp) ? channelProp.description : null}
           </div>
           <div className="message-index">{messagesIndex}</div>
 

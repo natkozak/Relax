@@ -21,7 +21,9 @@ class ChannelModal extends React.Component {
       <div>
         <div className="modal-child">
           <button className="close-modal-button" onClick={this.handleSubmit}>X</button>
+          About
           <ChannelAboutForm closeModal={this.props.closeModal} />
+          Settings
           <ChannelSettingsForm closeModal={this.props.closeModal} />
         </div>
         <div className="modal-background"></div>
