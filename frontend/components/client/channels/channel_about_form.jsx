@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { updateChannel } from '/frontend/actions/channel_actions';
+import { requestChannel, updateChannel } from '/frontend/actions/channel_actions';
 
 class ChannelAboutForm extends React.Component {
   constructor(props) {
@@ -29,13 +29,16 @@ class ChannelAboutForm extends React.Component {
   }
 
   render() {
+    let description;
+    this.state ? description = this.state.description : null;
+
     return (
       <div>
         <form onSubmit={this.handleSubmit} className="channel-about-form">
           <label>Description
             <input className="channel-about-description-input"
               type='text'
-              value={this.state.description}
+              value={description}
               onChange={this.update('description')}
             />
           </label>
