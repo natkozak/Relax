@@ -7,13 +7,19 @@ class ChannelAboutForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = ({ description: "" });
+    const channelId = this.props.currentChannel;
+
+    this.state = this.props.channels.channelId;
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount(){
+    this.props.requestChannel(this.props.currentChannel);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.updateChannel(this.state);
+    this.props.updateChannel(this.state)
     this.setState({ description: "" });
     this.props.closeModal();
   }
@@ -46,10 +52,12 @@ class ChannelAboutForm extends React.Component {
 
 const mapSTP = (state, ownProps) => ({
   authorId: state.session.id,
-  currentChannel: ownProps.location.pathname.split("/")[3]
+  currentChannel: ownProps.location.pathname.split("/")[3],
+  channels: state.entities.channels
 });
 
 const mapDTP = dispatch => ({
+  requestChannel: channelId => dispatch(requestChannel(channelId)),
   updateChannel: channelId => dispatch(updateChannel(channelId)) // this component needs the channelId somehow, right?
 });
 
