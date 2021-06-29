@@ -8,8 +8,9 @@ class ChannelAboutForm extends React.Component {
     super(props);
 
     const channelId = this.props.currentChannel;
-
-    this.state = this.props.channels.channelId;
+    let tempState = this.props.channels.channelId;
+    tempState.description = "";
+    this.state = tempState;
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
