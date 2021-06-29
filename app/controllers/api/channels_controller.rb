@@ -31,13 +31,17 @@ class Api::ChannelsController < ApplicationController
   end
 
   def update
-    # @channel = Channel.find(params[:id])
-    # render json: {errors: @channel.errors.full_messages, status: 422} unless @channel.update(channel_params)
+    @channel = Channel.find(params[:id])
+    if @channel.update(channel_params)
+      render :show
+    else 
+      render json: @channel.errors.full_messages, status: 422
+    end
   end
 
   def destroy
-    # @channel = Channel.find(params[:id])
-    # @channel.destroy
+    @channel = Channel.find(params[:id])
+    @channel.destroy
   end
 
   private

@@ -8,9 +8,7 @@ class ChannelAboutForm extends React.Component {
     super(props);
 
     const channelId = this.props.currentChannel;
-    let tempState = this.props.channels.channelId;
-    tempState.description = "";
-    this.state = tempState;
+    this.state = { ...this.props.channels[channelId], description: ""};
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -20,16 +18,18 @@ class ChannelAboutForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.updateChannel(this.state)
+    this.props.updateChannel(this.state);
     this.setState({ description: "" });
     this.props.closeModal();
   }
-
+  
   update(field) {
     return e => this.setState({ [field]: e.currentTarget.value });
   }
-
+  
   render() {
+    
+    console.log("this.state", this.state);
     let description;
     this.state ? description = this.state.description : null;
 

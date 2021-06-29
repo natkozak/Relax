@@ -58,9 +58,6 @@ class MessageIndex extends React.Component {
     const channelId = this.getChannel();
     const channelProp = this.props.channels[channelId];
 
-
-    console.log("current channel", this.props.currentChannelFromPath)
-
     const messagesList = Object.values(this.props.messages).filter((message) => message.channelId === this.getChannel());
     const messagesIndex = messagesList.map((message) => {
       return (

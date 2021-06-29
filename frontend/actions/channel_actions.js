@@ -15,6 +15,7 @@ export const receiveChannels = (channels) => {
 }
 
 export const receiveChannel = (channel) => {
+  if (!channel) debugger;
   return {
     type: RECEIVE_CHANNEL,
     channel
