@@ -28,8 +28,6 @@ class ChannelAboutForm extends React.Component {
   }
   
   render() {
-    
-    console.log("this.state", this.state);
     let description;
     this.state ? description = this.state.description : null;
 
@@ -55,14 +53,13 @@ class ChannelAboutForm extends React.Component {
 
 
 const mapSTP = (state, ownProps) => ({
-  authorId: state.session.id,
   currentChannel: ownProps.location.pathname.split("/")[3],
   channels: state.entities.channels
 });
 
 const mapDTP = dispatch => ({
   requestChannel: channelId => dispatch(requestChannel(channelId)),
-  updateChannel: channelId => dispatch(updateChannel(channelId)) // this component needs the channelId somehow, right?
+  updateChannel: channel => dispatch(updateChannel(channel))
 });
 
 export default withRouter(connect(mapSTP, mapDTP)(ChannelAboutForm));

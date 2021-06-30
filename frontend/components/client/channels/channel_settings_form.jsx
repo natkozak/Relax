@@ -1,41 +1,56 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { requestChannel, deleteChannel } from '/frontend/actions/channel_actions';
+import { Redirect, withRouter } from 'react-router-dom';
 
 class ChannelSettingsForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = ({ name: "" });
+    this.channelId = this.props.currentChannel;
+    this.state = this.props.channels[this.channelId];
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  update(field) {
-    return e => this.setState({ [field]: e.currentTarget.value });
+  componentDidMount() {
+    this.props.requestChannel(this.channelId);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.deleteChannel();
+
+    this.props.deleteChannel(this.channelId)
+      // .then(this.props.history.push(`/client/channels/1/messages`));
     this.props.closeModal();
   }
 
   render() {
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit} className="channel-settings-form">
-          <label>Description
-            <input className="channel-settings-description-input"
-              type='text'
-              value={this.state.description}
-              onChange={this.update('description')}
-            />
-          </label>
 
-          <button type='submit' className="channel-settings-submit-button">Edit</button>
-        </form>
-
-      </div>
-    );
+    console.log("this.channelId", this.channelId);
+    if (this.channelId !== "1") {
+      return (
+        <div>
+          <button onClick={this.handleSubmit} className="channel-settings-delete-button">Delete</button>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          This channel cannot be deleted.
+        </div>
+      );
+    }
   }
 }
 
-export default ChannelSettingsForm;
+const mapSTP = (state, ownProps) => ({
+  currentChannel: ownProps.location.pathname.split("/")[3],
+  channels: state.entities.channels
+});
+
+const mapDTP = dispatch => ({
+  requestChannel: channelId => dispatch(requestChannel(channelId)),
+  deleteChannel: channelId => dispatch(deleteChannel(channelId)) // this component needs the channelId somehow, right?
+});
+
+export default withRouter(connect(mapSTP, mapDTP)(ChannelSettingsForm));
