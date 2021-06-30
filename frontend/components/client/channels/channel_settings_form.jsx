@@ -20,7 +20,7 @@ class ChannelSettingsForm extends React.Component {
     e.preventDefault();
 
     this.props.deleteChannel(this.channelId)
-      // .then(this.props.history.push(`/client/channels/1/messages`));
+      .then(res => this.props.history.push(`/client/channels/1/messages`));
     this.props.closeModal();
   }
 
