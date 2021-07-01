@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { requestChannel, deleteChannel } from '/frontend/actions/channel_actions';
-import { Redirect, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class ChannelSettingsForm extends React.Component {
   constructor(props) {
@@ -25,8 +25,6 @@ class ChannelSettingsForm extends React.Component {
   }
 
   render() {
-
-    console.log("this.channelId", this.channelId);
     if (this.channelId !== "1") {
       return (
         <div>
