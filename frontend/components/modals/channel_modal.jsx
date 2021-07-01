@@ -13,11 +13,24 @@ class ChannelModal extends React.Component {
     this.state = {tab: "about"};
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.showAbout = this.showAbout.bind(this);
+    this.showSettings = this.showSettings.bind(this);
   }
 
   handleSubmit(e) {
-    e.preventDefault;
+    e.preventDefault();
     this.props.closeModal();
+  }
+
+  showAbout(e){
+    e.preventDefault();
+    this.setState({tab: "about"});
+  }
+
+  showSettings(e) {
+    console.log("hi");
+    e.preventDefault();
+    this.setState({tab: "settings"});
   }
 
   render() {
@@ -27,10 +40,10 @@ class ChannelModal extends React.Component {
         <div className="modal-child">
           <button className="close-modal-button" onClick={this.handleSubmit}>X</button>
           <div className="channel-modal-name">#{this.channel.name}</div>
-          <div className="channel-modal-tab">About</div>
-          <ChannelAboutForm closeModal={this.props.closeModal} />
-          <div className="channel-modal-tab">Settings</div>
-          <ChannelSettingsForm closeModal={this.props.closeModal} />
+          <div onClick={this.showAbout} className="channel-modal-tab">About</div>
+          <div onClick={this.showSettings} className="channel-modal-tab">Settings</div>
+          {(this.state.tab === "about") ? <ChannelAboutForm closeModal={this.props.closeModal} /> : null}
+          {(this.state.tab === "settings") ? <ChannelSettingsForm closeModal={this.props.closeModal} /> : null}
         </div>
         <div className="modal-background"></div>
       </div>
