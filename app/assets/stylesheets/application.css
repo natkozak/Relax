@@ -447,5 +447,14 @@ i {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 30;
-  background-color: fuchsia;
+  background-color: whitesmoke;
+  border-radius: 10px;
+}
+
+.channel-modal-name {
+  font-weight: bold;
+}
+
+.channel-modal-tab {
+  color: gray;
 }
