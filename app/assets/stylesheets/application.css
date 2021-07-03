@@ -261,9 +261,6 @@ i {
   height: 100%;
   top: 0;
   left: 0;
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
   background-color: #611f69;
 }
 
@@ -380,14 +377,12 @@ i {
 .comment-index-container {
   display: flex;
   flex-direction: column;
-  /* background-color: blue; */
 }
 
 .comment-index {
   list-style: none;
   overflow-y: scroll;
   width: 100%;
-  /* background-color: yellow; */
 }
 
 /* CHANNELS */
@@ -445,11 +440,19 @@ i {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 20%;
+  height: 20%;
+  padding: 10px;
   transform: translate(-50%, -50%);
   z-index: 30;
   background-color: whitesmoke;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
+
+/* channel modal */
 
 .channel-modal-name {
   font-weight: bold;
@@ -457,4 +460,20 @@ i {
 
 .channel-modal-tab {
   color: gray;
+  display: flex;
+  justify-content: space-around;
+}
+
+.channel-modal-tab * {
+  border: 1px grey;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.channel-modal-tab-about {
+  color: inherit;
+}
+
+.channel-modal-tab-settings {
+  color: inherit;
 }
