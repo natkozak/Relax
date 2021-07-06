@@ -415,15 +415,6 @@ i {
 }
 
 
-
-/* .edit-message-button {
-  align-self: flex-end;
-} */
-
-/* .delete-message-button {
-  align-self: flex-end;
-} */
-
 /* MODALS */
 
 .modal-background {
@@ -449,10 +440,11 @@ i {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
 }
 
-/* channel modal */
+.channel-close-modal-button {
+  align-self: flex-end;
+}
 
 .channel-modal-name {
   font-weight: bold;
@@ -460,14 +452,24 @@ i {
 
 .channel-modal-tab {
   color: gray;
+  /* background-color: orange; */
   display: flex;
   justify-content: space-around;
 }
 
 .channel-modal-tab * {
-  border: 1px grey;
+  /* background-color: yellow; */
+  padding: 5px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+}
+
+.channel-modal-tab-about:hover {
+  box-shadow: inset 0px -2px green;
+}
+
+.channel-modal-tab-settings:hover {
+  box-shadow: inset 0px -2px green;
 }
 
 .channel-modal-tab-about {
@@ -476,4 +478,31 @@ i {
 
 .channel-modal-tab-settings {
   color: inherit;
+  /* background-color: yellow; */
+}
+
+.channel-about {
+  display: flex;
+  background-color: white;
+  border-radius: 10px;
+  height: 100%;
+  align-items: center;
+}
+
+.channel-about-form {
+  /* background-color: blue; */
+  display: flex;
+  justify-content: space-around;
+  /* height: 100%; */
+  width: 100%;
+  /* padding: 10px; */
+}
+
+.channel-about-submit-button {
+  width: 20%;
+  align-self: flex-end;
+}
+
+.channel-settings-delete-button {
+
 }

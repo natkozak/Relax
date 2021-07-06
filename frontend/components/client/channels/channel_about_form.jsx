@@ -32,18 +32,17 @@ class ChannelAboutForm extends React.Component {
     this.state ? description = this.state.description : null;
 
     return (
-      <div>
+      <div className="channel-about">
         <form onSubmit={this.handleSubmit} className="channel-about-form">
-          <label>Description
             <input className="channel-about-description-input"
               type='text'
+            placeholder="Change description"
               value={description}
               onChange={this.update('description')}
             />
-          </label>
-
-          <button type='submit' className="channel-about-submit-button">Edit</button>
+          <button type='submit' className="channel-about-submit-button">Save</button>
         </form>
+        
 
       </div>
     );

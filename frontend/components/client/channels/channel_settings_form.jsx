@@ -28,7 +28,7 @@ class ChannelSettingsForm extends React.Component {
     if (this.channelId !== "1") {
       return (
         <div>
-          <button onClick={this.handleSubmit} className="channel-settings-delete-button">Delete</button>
+          <button onClick={this.handleSubmit} className="channel-settings-delete-button">Delete Channel</button>
         </div>
       )
     } else {
