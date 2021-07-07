@@ -37,7 +37,7 @@ class ChannelModal extends React.Component {
 
     return (
       <div>
-        <div className="modal-child">
+        <div className="channel-modal-child">
         <button className="channel-close-modal-button" onClick={this.handleSubmit}>X</button>
           <div className="channel-modal-name">#{this.channel.name}</div>
           <div className="channel-modal-tab">

@@ -415,7 +415,7 @@ i {
 }
 
 
-/* MODALS */
+/* MODAL */
 
 .modal-background {
   position: fixed;
@@ -427,7 +427,73 @@ i {
   z-index: 10;
 }
 
+/* CREATE CHANNEL MODAL */
+
 .modal-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20%;
+  height: 40%;
+  padding: 10px;
+  transform: translate(-50%, -50%);
+  z-index: 30;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.close-modal-button {
+  align-self: flex-end;
+}
+
+.create-channel-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  border-radius: 10px;
+  background-color: white;
+  padding: 5px;
+}
+
+.create-channel-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+
+}
+
+.create-channel-form label {
+  font-weight: bold;
+}
+
+.private-text {
+  font-weight: lighter;
+}
+
+.create-channel-name-input {
+
+}
+
+.create-channel-description-input {
+
+}
+
+.create-channel-isPrivate-input {
+
+}
+
+.create-channel-submit-button {
+  align-self: flex-end;
+}
+
+/* EDIT/DELETE CHANNEL MODAL */
+
+.channel-modal-child {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -440,10 +506,6 @@ i {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-}
-
-.modal-child * {
-  font-family: Helvetica;
 }
 
 .channel-close-modal-button {
@@ -510,6 +572,7 @@ i {
   height: 100%;
   align-items: center;
   justify-content: center;
+  border-radius: 10px;
 }
 
 .channel-settings-delete-button {

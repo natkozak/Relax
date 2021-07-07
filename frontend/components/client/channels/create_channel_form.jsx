@@ -28,7 +28,7 @@ class CreateChannelForm extends React.Component {
     return (
       <div className="create-channel-div">
         <form onSubmit={this.handleSubmit} className="create-channel-form" >
-          <label>Name
+          <label>Name {}
             <input className="create-channel-name-input"
               type='text'
               value={this.state.name}
@@ -42,9 +42,9 @@ class CreateChannelForm extends React.Component {
               onChange={this.update('description')}
             />
           </label>
-          <label><b>Make Private</b>
+          <label>Make Private
           {/* make the following text change conditionally depending on whether the checkbox is toggled */}
-            <div>When a channel is set to private, it can only be viewed or joined by invitation</div>
+            <div className="private-text">When a channel is set to private, it can only be viewed or joined by invitation</div>
             <input className="create-channel-isPrivate-input"
               type='checkbox'
               onChange={this.update('is_private')}
