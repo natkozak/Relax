@@ -442,6 +442,10 @@ i {
   flex-direction: column;
 }
 
+.modal-child * {
+  font-family: Helvetica;
+}
+
 .channel-close-modal-button {
   align-self: flex-end;
 }
@@ -452,13 +456,11 @@ i {
 
 .channel-modal-tab {
   color: gray;
-  /* background-color: orange; */
   display: flex;
   justify-content: space-around;
 }
 
 .channel-modal-tab * {
-  /* background-color: yellow; */
   padding: 5px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -478,7 +480,6 @@ i {
 
 .channel-modal-tab-settings {
   color: inherit;
-  /* background-color: yellow; */
 }
 
 .channel-about {
@@ -490,12 +491,9 @@ i {
 }
 
 .channel-about-form {
-  /* background-color: blue; */
   display: flex;
   justify-content: space-around;
-  /* height: 100%; */
   width: 100%;
-  /* padding: 10px; */
 }
 
 .channel-about-submit-button {
@@ -503,6 +501,18 @@ i {
   align-self: flex-end;
 }
 
-.channel-settings-delete-button {
+.channel-settings {
+  background-color: white;
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
 
+.channel-settings-delete-button {
+  width: 40%;
+  height: 25%;
 }

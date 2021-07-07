@@ -27,13 +27,13 @@ class ChannelSettingsForm extends React.Component {
   render() {
     if (this.channelId !== "1") {
       return (
-        <div>
+        <div className="channel-settings">
           <button onClick={this.handleSubmit} className="channel-settings-delete-button">Delete Channel</button>
         </div>
       )
     } else {
       return (
-        <div>
+        <div className="channel-settings">
           This channel cannot be deleted.
         </div>
       );

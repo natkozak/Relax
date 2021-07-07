@@ -41,8 +41,8 @@ class ChannelModal extends React.Component {
         <button className="channel-close-modal-button" onClick={this.handleSubmit}>X</button>
           <div className="channel-modal-name">#{this.channel.name}</div>
           <div className="channel-modal-tab">
-            <div onClick={this.showAbout} className="channel-modal-tab-about">About</div>
-            <div onClick={this.showSettings} className="channel-modal-tab-settings">Settings</div>
+            <div onClick={this.showAbout} className="channel-modal-tab-about">Edit</div>
+            <div onClick={this.showSettings} className="channel-modal-tab-settings">Delete</div>
           </div>
           
           {(this.state.tab === "about") ? <ChannelAboutForm closeModal={this.props.closeModal} /> : null}
