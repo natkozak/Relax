@@ -475,7 +475,7 @@ i {
   font-weight: lighter;
 }
 
-.create-channel-name-input {
+/* .create-channel-name-input {
 
 }
 
@@ -485,7 +485,7 @@ i {
 
 .create-channel-isPrivate-input {
 
-}
+} */
 
 .create-channel-submit-button {
   align-self: flex-end;
