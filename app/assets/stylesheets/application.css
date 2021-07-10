@@ -448,13 +448,19 @@ i {
   background-color: lightgray
 }
 
-.comment-message-button:hover,
-.comment-message-button:focus {
-  background-color: lightgray;
+.comment-message-button {
   border-style: solid none;
   border-color: rgb(236, 236, 236);
   border-width: 1px 0px;
 }
+
+.comment-message-button:hover,
+.comment-message-button:focus {
+  background-color: lightgray;
+  border-color: lightgray;
+}
+
+
 
 /* CHANNELS */
 
