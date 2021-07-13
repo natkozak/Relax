@@ -337,7 +337,7 @@ i {
   margin: 0;
   border: none;
   text-decoration: none;
-  background-color: white;
+  background-color: rgb(236, 236, 236);
   font-size: large;
   font-weight: bold;
   border-radius: 5px;
@@ -437,6 +437,7 @@ i {
   cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
+  border-radius: 5px;
 }
 
 .message-buttons button {
@@ -491,6 +492,20 @@ i {
 
 .channel-header-channels {
   color: white;
+}
+
+.create-channel-modal-button {
+  margin: 0;
+  text-decoration: none;
+  border: none;
+  height: 50%;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.create-channel-modal-button:hover,
+.create-channel-modal-button:focus {
+  background-color: lightgray;
 }
 
 
@@ -553,18 +568,6 @@ i {
 .private-text {
   font-weight: lighter;
 }
-
-/* .create-channel-name-input {
-
-}
-
-.create-channel-description-input {
-
-}
-
-.create-channel-isPrivate-input {
-
-} */
 
 .create-channel-submit-button {
   align-self: flex-end;
