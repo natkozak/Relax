@@ -76,14 +76,15 @@ class MessageIndex extends React.Component {
     return (
       <div className="message-index-container">
         <div className="message-index-and-create">
-          <div className="message-index-channel-name">
-            <button onClick={this.openChannelModal}> 
-            #{(channelProp) ? channelProp.name : null}
+          <div className="message-index-channel-name-desc">
+            <button className="message-index-channel-button" onClick={this.openChannelModal}> 
+              { }# {(channelProp) ? channelProp.name : null}
             </button>
+            <div className="message-index-channel-description">
+              {(channelProp) ? channelProp.description : null}
+            </div>
           </div>
-          <div className="message-index-channel-description">
-            {(channelProp) ? channelProp.description : null}
-          </div>
+
           <div className="message-index">{messagesIndex}</div>
 
           <CreateMessageFormContainer

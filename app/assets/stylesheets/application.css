@@ -20,30 +20,6 @@ body {
   font-family: Helvetica;
  }
 
- /* edit for individual button styling */
-/* button {
-  display: inline-block;
-  border: none;
-  margin: 0;
-  text-decoration: none;
-  background: #0069ed;
-  color: black;
-  font-family: sans-serif;
-  font-size: 1rem;
-  cursor: pointer;
-  text-align: center;
-  transition: background 250ms ease-in-out, 
-              transform 150ms ease;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-button:hover,
-button:focus {
-    background: grey;
-} */
-
-
 /* SPLASH PAGE */
 
 .splash-div {
@@ -344,11 +320,37 @@ i {
 
 .message-index-and-create {
   display: flex;
-  align-items: center;
   flex-direction: column;
+  justify-content: flex-start;
   height: 100%;
   width: 100%;
   background-color: white;
+}
+
+.message-index-channel-name-desc {
+  display: flex;
+  justify-self: flex-start;
+  padding: 5px;
+}
+
+.message-index-channel-button {
+  margin: 0;
+  border: none;
+  text-decoration: none;
+  background-color: white;
+  font-size: large;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.message-index-channel-button:hover,
+.message-index-channel-button:focus {
+  background-color: lightgray;
+}
+
+.message-index-channel-description{
+  padding: 5px;
+  font-size: small;
 }
 
 .message-index {
@@ -445,7 +447,7 @@ i {
 
 .message-buttons button:hover,
 .message-buttons button:focus {
-  background-color: lightgray
+  background-color: lightgray;
 }
 
 .comment-message-button {
