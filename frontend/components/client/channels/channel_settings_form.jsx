@@ -48,7 +48,7 @@ const mapSTP = (state, ownProps) => ({
 
 const mapDTP = dispatch => ({
   requestChannel: channelId => dispatch(requestChannel(channelId)),
-  deleteChannel: channelId => dispatch(deleteChannel(channelId)) // this component needs the channelId somehow, right?
+  deleteChannel: channelId => dispatch(deleteChannel(channelId))
 });
 
 export default withRouter(connect(mapSTP, mapDTP)(ChannelSettingsForm));
