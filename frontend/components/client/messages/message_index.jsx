@@ -78,7 +78,7 @@ class MessageIndex extends React.Component {
         <div className="message-index-and-create">
           <div className="message-index-channel-name-desc">
             <button className="message-index-channel-button" onClick={this.openChannelModal}> 
-              { }# {(channelProp) ? channelProp.name : null}
+              { }# {(channelProp) ? channelProp.name : null} <i class="fas fa-angle-down"></i>
             </button>
             <div className="message-index-channel-description">
               {(channelProp) ? channelProp.description : null}
