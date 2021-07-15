@@ -14,6 +14,21 @@
  *= require_self
  */
 
+ /* STYLING TODOS:
+    * Style close buttons
+    * Conditionally set width of messages based on comments opened/closed
+    * Format comments 
+    * DRY:
+      * inherit
+      * using broader selectors
+      * comment out stuff and see if it changes anything
+    * create channel modal
+    * Move the channel description to the channel menu
+    * Conditionally render message buttons depending on whether that message is hovered (how to make this mobile friendly?)
+    * Eliminate padding
+    * Style the header message in comment index
+ */
+
 /* ALL PAGES */
 
 body {
@@ -257,7 +272,6 @@ body {
 }
 
 .client-channels-messages {
-  background-color: yellow;
   display: flex;
   height: 90%;
 }
@@ -325,17 +339,14 @@ body {
   color: black;
 }
 
-.fa-edit {
-  color: darkgrey;
+/* .fa-edit {
 }
 
 .fa-trash-alt {
-  color: darkgrey;
 }
 
 .fa-comments {
-  color: darkgrey;
-}
+} */
 
 /* MESSAGES */
 
@@ -344,6 +355,8 @@ body {
   width: 100%;
   background-color: white;
 }
+
+/* todo: make a conditional style that changes msgindexandcreate width to 50% when comments are open  */
 
 .message-index-and-create {
   display: flex;
@@ -450,11 +463,33 @@ create-message-submit-button:focus {
   flex-direction: column;
 }
 
+.close-comments-button {
+  align-self: flex-end;
+}
+
 .comment-index {
   list-style: none;
   overflow-y: scroll;
   width: 100%;
 }
+
+/* .create-comment-div {
+
+}
+
+.create-comment-form {
+
+}
+
+.create-comment-input {
+
+}
+
+.create-message-submit-button {
+
+} */
+
+
 
 /* SINGLE MESSAGE */
 
@@ -492,23 +527,11 @@ create-message-submit-button:focus {
 
 }
 
-/* .message-buttons button:hover,
-.message-buttons button:focus {
-  background-color: lightgray;
-} */
-
 .comment-message-button {
   border-style: solid none;
   border-color: rgb(245, 245, 245);
   border-width: 1px 0px;
 }
-
-/* .comment-message-button:hover,
-.comment-message-button:focus {
-  background-color: lightgray;
-  border-color: lightgray;
-} */
-
 
 
 /* CHANNELS */
