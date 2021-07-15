@@ -309,8 +309,8 @@ body {
   color: black;
 }
 
-.fas:hover,
-.fas:focus {
+.message-buttons i:hover,
+.message-buttons i:focus {
   background-color: darkgrey;
 }
 
@@ -372,7 +372,7 @@ body {
 
 .message-index-channel-button:hover,
 .message-index-channel-button:focus {
-  background-color: lightgray;
+  background-color: darkgrey;
 }
 
 .message-index-channel-description{
@@ -393,17 +393,40 @@ body {
 }
 
 .create-message-form {
-  background-color: blue;
-  width: 100%;
   display: flex;
+  padding: 20px;
 }
 
 .create-message-input {
   top: 0;
   left: 0;
-  display: inline-block;
   width: 100%;
   height: 30px;
+  padding: 5px;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+}
+
+input:focus
+{
+	outline:0;
+}
+
+.create-message-submit-button {
+  margin-left: 5px;
+  border: 0;
+  text-decoration: none;
+  background-color: rgb(245, 245, 245);
+  text-align: center;
+  font-size: 100%;
+  border-radius: 5px;
+}
+
+.create-message-submit-button:hover,
+create-message-submit-button:focus {
+  background-color: darkgrey;
 }
 
 .render-name-message {
@@ -447,7 +470,6 @@ body {
   align-items: center;
   height: 100%;
   width: 15%;
-  /* background-color: red; */
 }
 
 .message-buttons *{
@@ -458,7 +480,6 @@ body {
   background-color: rgb(245, 245, 245);
   text-align: center;
   font-size: 100%;
-  /* color: black; */
   cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
