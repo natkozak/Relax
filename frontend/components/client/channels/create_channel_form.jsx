@@ -7,7 +7,8 @@ class CreateChannelForm extends React.Component {
       name: "",
       description: "",
       is_private: false,
-      is_direct: false
+      is_direct: false,
+      creator_id: this.props.signedInUserId
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }

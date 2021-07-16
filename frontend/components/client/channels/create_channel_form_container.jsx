@@ -4,7 +4,7 @@ import CreateChannelForm from './create_channel_form';
 
 
 const mapSTP = (state) => ({
-  authorId: state.session.id
+  signedInUserId: state.session.id
 });
 
 const mapDTP = dispatch => ({
