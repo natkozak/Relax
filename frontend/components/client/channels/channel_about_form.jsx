@@ -7,13 +7,13 @@ class ChannelAboutForm extends React.Component {
   constructor(props) {
     super(props);
 
-    const channelId = this.props.currentChannel;
-    this.state = { ...this.props.channels[channelId], description: ""};
+    this.channelId = this.props.currentChannel || 1;
+    this.state = { ...this.props.channels[this.channelId], description: ""};
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount(){
-    this.props.requestChannel(this.props.currentChannel);
+    this.props.requestChannel(this.channelId);
   }
 
   handleSubmit(e) {

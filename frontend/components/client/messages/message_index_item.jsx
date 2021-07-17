@@ -76,7 +76,7 @@ class MessageIndexItem extends React.Component {
         <div className="message-buttons">
           {editCheck ? <button className="edit-message-button" onClick={this.openEditForm.bind(this)}><i className="fas fa-edit"></i></button> : null }
           {deleteCheck ? <button className="delete-message-button" onClick={this.handleDelete.bind(this)}><i className="fas fa-trash-alt"></i></button> : null}
-          <Link to={`/client/channels/${this.props.channelId}/messages/${this.props.message.id}/comments`} className="comment-message-button" onClick={this.openComments.bind(this)}><i class="fas fa-comments"></i></Link>
+          <Link to={`/client/channels/${this.props.channelId}/messages/${this.props.message.id}/comments`} className="comment-message-button" onClick={this.openComments.bind(this)}><i className="fas fa-comments"></i></Link>
         </div>
       </li>
     );
