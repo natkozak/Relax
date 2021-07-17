@@ -596,7 +596,8 @@ create-message-submit-button:focus {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 20%;
+  margin: auto;
+  /* width: 20%; */
   height: 40%;
   padding: 10px;
   transform: translate(-50%, -50%);
@@ -632,6 +633,16 @@ create-message-submit-button:focus {
 
 .create-channel-form label {
   font-weight: bold;
+}
+
+.create-channel-form input {
+  border: none;
+  background-image: none;
+  background-color: lightgray;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  
 }
 
 .private-text {
