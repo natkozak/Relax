@@ -10,7 +10,7 @@ class ChannelIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.requestChannels();
+    this.props.requestChannels(this.props.currentUser);
   }
 
   handleSubmit(e){

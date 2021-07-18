@@ -9,7 +9,7 @@ class ChannelModal extends React.Component {
   constructor(props) {
     super(props);
 
-    this.channel = this.props.channels[this.props.channelId];
+    this.channel = this.props.channels[this.props.channelId] || 1;
     this.state = {tab: "about"};
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -39,7 +39,7 @@ class ChannelModal extends React.Component {
       <div>
         <div className="channel-modal-child">
         <button className="channel-close-modal-button" onClick={this.handleSubmit}>X</button>
-          <div className="channel-modal-name">#{this.channel.name}</div>
+          <div className="channel-modal-name">#{this.channel.name || "general"}</div>
           <div className="channel-modal-tab">
             <div onClick={this.showAbout} className="channel-modal-tab-about">Edit</div>
             <div onClick={this.showSettings} className="channel-modal-tab-settings">Delete</div>

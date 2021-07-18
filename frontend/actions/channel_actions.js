@@ -15,7 +15,6 @@ export const receiveChannels = (channels) => {
 }
 
 export const receiveChannel = (channel) => {
-  if (!channel) debugger;
   return {
     type: RECEIVE_CHANNEL,
     channel
@@ -35,8 +34,8 @@ export const receiveCurrentChannel = channel => ({
 });
 
 
-export const requestChannels = () => dispatch => (
-  ChannelAPIUtil.fetchChannels()
+export const requestChannels = (userId) => dispatch => (
+  ChannelAPIUtil.fetchChannels(userId)
     .then(channels => dispatch(receiveChannels(channels)))
 );
 

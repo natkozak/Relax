@@ -7,7 +7,7 @@ class ChannelSettingsForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.channelId = this.props.currentChannel;
+    this.channelId = this.props.currentChannel || 1;
     this.state = this.props.channels[this.channelId];
     this.handleSubmit = this.handleSubmit.bind(this);
   }

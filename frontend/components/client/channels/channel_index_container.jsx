@@ -5,11 +5,12 @@ import ChannelIndex from './channel_index'
 
 
 const mapSTP = (state) => ({
-  channels: state.entities.channels
+  channels: state.entities.channels,
+  currentUser: state.session.id,
 });
 
 const mapDTP = dispatch => ({
-  requestChannels: () => dispatch(requestChannels()),
+  requestChannels: (userId) => dispatch(requestChannels(userId)),
   openModal: (component) => dispatch(openModal(component))
 });
 

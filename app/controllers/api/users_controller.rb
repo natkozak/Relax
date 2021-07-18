@@ -4,6 +4,8 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       login!(@user)
+      user_in_general = ChannelMember.create(user_id: @user.id, channel_id: 1)
+      user_in_random = ChannelMember.create(user_id: @user.id, channel_id: 2)
       render "api/users/show"
     else
       render json: @user.errors.full_messages, status: 422
