@@ -13,7 +13,16 @@ bob = User.create(email: 'bob@bob.com', password: '456loris')
 
 general = Channel.create({name: 'general', is_direct: false, is_private: false, creator_id: 1})
 random = Channel.create({name: 'random', is_direct: false, is_private: false, creator_id: 1})
-# scratchpad = Channel.create(name: demo.full_name, is_direct: true, is_private: true)
+
+demo_in_general = ChannelMember.create(user_id: 2, channel_id: 1)
+demo_in_random = ChannelMember.create(user_id: 2, channel_id: 2)
+
+alice_in_general = ChannelMember.create(user_id: 3, channel_id: 1)
+alice_in_random = ChannelMember.create(user_id: 3, channel_id: 2)
+
+bob_in_general = ChannelMember.create(user_id: 4, channel_id: 1)
+bob_in_random = ChannelMember.create(user_id: 4, channel_id: 2)
+
 
 first_message = Message.create({content: 'first top level message!', author_id: 2, channel_id: 1})
 second_message = Message.create({content: 'second top level message!', author_id: 2, channel_id: 1})
