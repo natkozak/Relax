@@ -28,10 +28,14 @@ class Api::ChannelsController < ApplicationController
         # direct channels' names are the members' full names
       elsif @channel.is_private
         # private channels can only be joined by invitees who are already in the channel. show up in the main channel list
+        @creator_membership = ChannelMember.create(user_id: @channel.creator_id, channel_id: @channel.id)
       else # public channel
-        # public channels are visible to everyone, but not automatically joined by everyone
+        ids = User.all.pluck(:id)
+        ids.each do |id|
+          ChannelMember.create(user_id: id, channel_id: @channel.id)
+        end
+        # automatically joined by everyone until search is implemented
       end
-      @creator_membership = ChannelMember.create(user_id: @channel.creator_id, channel_id: @channel.id)
       render :show
     end
   end
