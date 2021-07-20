@@ -3,14 +3,6 @@ class Api::ChannelsController < ApplicationController
  
   def index
     #todo: search function will need to get a list of all channels that are not private, not just all channels that a user has membership in. make this another function?
-    # puts ""
-    # puts ""
-    # puts ""
-    # puts "channels"
-    # puts channel_params[:userId]
-    # puts ""
-    # puts ""
-    # puts ""
 
     @user = User.find_by(id: params[:userId])
     @channels = @user.channels
