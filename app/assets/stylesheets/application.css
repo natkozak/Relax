@@ -594,7 +594,6 @@ create-message-submit-button:focus {
   top: 50%;
   left: 50%;
   margin: auto;
-  /* width: 20%; */
   height: 40%;
   padding: 10px;
   transform: translate(-50%, -50%);
