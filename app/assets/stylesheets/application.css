@@ -336,15 +336,6 @@ body {
   color: black;
 }
 
-/* .fa-edit {
-}
-
-.fa-trash-alt {
-}
-
-.fa-comments {
-} */
-
 /* MESSAGES */
 
 .message-index-container {
@@ -469,24 +460,6 @@ create-message-submit-button:focus {
   overflow-y: scroll;
   width: 100%;
 }
-
-/* .create-comment-div {
-
-}
-
-.create-comment-form {
-
-}
-
-.create-comment-input {
-
-}
-
-.create-message-submit-button {
-
-} */
-
-
 
 /* SINGLE MESSAGE */
 
@@ -667,11 +640,12 @@ create-message-submit-button:focus {
 
 /* EDIT/DELETE CHANNEL MODAL */
 
-.channel-modal-child {
+/* .modal-child {
   position: absolute;
   top: 50%;
   left: 50%;
-  height: 20%;
+  margin: auto;
+  height: 40%;
   padding: 10px;
   transform: translate(-50%, -50%);
   z-index: 30;
@@ -679,6 +653,23 @@ create-message-submit-button:focus {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+} */
+
+.channel-modal-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: auto;
+  height: 40%;
+  padding: 10px;
+  transform: translate(-50%, -50%);
+  z-index: 30;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .channel-close-modal-button {
@@ -746,9 +737,4 @@ create-message-submit-button:focus {
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-}
-
-.channel-settings-delete-button {
-  width: 40%;
-  height: 25%;
 }
