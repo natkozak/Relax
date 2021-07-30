@@ -566,7 +566,6 @@ create-message-submit-button:focus {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin: auto;
   height: 40%;
   padding: 10px;
   transform: translate(-50%, -50%);
@@ -589,7 +588,8 @@ create-message-submit-button:focus {
   height: 100%;
   border-radius: 10px;
   background-color: white;
-  padding: 5px;
+  padding: 20px;
+  margin: 10px;
 }
 
 .create-channel-form {
@@ -601,14 +601,21 @@ create-message-submit-button:focus {
 }
 
 .create-channel-form label {
+  /* font-weight: bold; */
+  display: flex;
+  /* justify-content: space-around; */
+}
+.create-channel-form label div{
   font-weight: bold;
   display: flex;
-  justify-content: space-around;
+  justify-self: flex-start;
+  margin: 5px;
 }
 
 .create-channel-form input {
+  justify-self: flex-end;
   border: none;
-
+  border-radius: 5px;
   background-image: none;
   background-color: rgb(202, 170, 170);
   -webkit-box-shadow: none;
@@ -640,27 +647,10 @@ create-message-submit-button:focus {
 
 /* EDIT/DELETE CHANNEL MODAL */
 
-/* .modal-child {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: auto;
-  height: 40%;
-  padding: 10px;
-  transform: translate(-50%, -50%);
-  z-index: 30;
-  background-color: whitesmoke;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-} */
-
 .channel-modal-child {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin: auto;
   height: 40%;
   padding: 10px;
   transform: translate(-50%, -50%);
@@ -674,6 +664,7 @@ create-message-submit-button:focus {
 
 .channel-close-modal-button {
   align-self: flex-end;
+  padding: 5px;
 }
 
 .channel-modal-name {
