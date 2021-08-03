@@ -628,6 +628,7 @@ create-message-submit-button:focus {
 }
 
 .create-channel-submit-button {
+  font-size: 1em;
   align-self: flex-end;
   border: none;
   -webkit-box-shadow: none;
