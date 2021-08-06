@@ -449,6 +449,7 @@ create-message-submit-button:focus {
 .comment-index-container {
   display: flex;
   flex-direction: column;
+  background-color:rgb(245, 245, 245);
 }
 
 .close-comments-button {

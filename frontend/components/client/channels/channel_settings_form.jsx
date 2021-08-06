@@ -32,6 +32,7 @@ class ChannelSettingsForm extends React.Component {
         </div>
       )
     } else {
+      
       return (
         <div className="channel-settings">
           This channel cannot be deleted.
