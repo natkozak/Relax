@@ -454,6 +454,13 @@ create-message-submit-button:focus {
 
 .close-comments-button {
   align-self: flex-end;
+  border: none;
+  border-radius: 3px;
+  background-color: inherit;
+}
+
+.close-comments-button:hover {
+  background-color: gray;
 }
 
 .comment-index {
@@ -580,6 +587,13 @@ create-message-submit-button:focus {
 
 .close-modal-button {
   align-self: flex-end;
+  border: none;
+  border-radius: 3px;
+  background-color: inherit;
+}
+
+.close-modal-button:hover {
+  background-color: gray;
 }
 
 .create-channel-div {
@@ -666,6 +680,13 @@ create-message-submit-button:focus {
 
 .channel-close-modal-button {
   align-self: flex-end;
+  border: none;
+  border-radius: 3px;
+  background-color: inherit;
+}
+
+.channel-close-modal-button:hover {
+  background-color: gray;
 }
 
 .channel-modal-name {

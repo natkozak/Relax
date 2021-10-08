@@ -69,7 +69,7 @@ class CommentIndex extends React.Component {
 
     return (
       <div className="comment-index-container">
-        <button className="close-comments-button" onClick={this.handleSubmit}>X</button>
+        <button className="close-comments-button" onClick={this.handleSubmit}><i class="fas fa-times"></i></button>
         <div>{this.renderTopMessage()}</div>
         <div className="comment-index">
           {commentsIndex}

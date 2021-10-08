@@ -19,7 +19,7 @@ class CreateChannel extends React.Component {
     return (
       <div>
         <div className="modal-child">
-          <button className="close-modal-button" onClick={this.handleSubmit}>X</button>
+          <button className="close-modal-button" onClick={this.handleSubmit}><i class="fas fa-times"></i></button>
           <CreateChannelFormContainer closeModal={this.props.closeModal}/>
         </div>
         <div className="modal-background"></div>
